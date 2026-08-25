@@ -1,0 +1,16 @@
+{
+  "name": "secu5d-day2-s3-01-unsafe-register-express",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Inscription JSON volontairement non validée pour Sécurité 101",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}

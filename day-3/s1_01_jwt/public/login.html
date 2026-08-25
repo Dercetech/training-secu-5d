@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Connexion — laboratoire JWT</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body data-page="login">
+  <header><nav>Formation › Jour 3 › Section 1 › Connexion</nav></header>
+  <main class="single-panel">
+    <section>
+      <p class="eyebrow">01 · JWT</p>
+      <h1>Connexion au laboratoire</h1>
+      <p class="lead">Connectez-vous avec le compte scolaire fictif. Le serveur place dans un cookie un JWT signé qui annonce volontairement le rôle <code>student</code>.</p>
+      <form id="login-form" class="login-form">
+        <label>Utilisateur <input name="username" value="alice" autocomplete="username" required></label>
+        <label>Mot de passe <input name="password" type="password" value="bonjour" autocomplete="current-password" required></label>
+        <button type="submit">Se connecter</button>
+      </form>
+      <p id="status" role="status" aria-live="polite"></p>
+      <p class="notice">Comptes et mots de passe fictifs. Application locale destinée au cours uniquement.</p>
+    </section>
+  </main>
+  <script src="/app.js" defer></script>
+</body>
+</html>

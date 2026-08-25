@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>training2 · Cyber-parodie homologuée</title>
+  <meta name="description" content="Une fausse homepage l33t, construite pour un lab de sécurité sur les cookies entre sous-domaines.">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; base-uri 'none'; form-action 'none'">
+  <style>
+    :root {
+      color-scheme: dark;
+      --black: #080808;
+      --paper: #fffbe8;
+      --ink: #111;
+      --acid: #caff00;
+      --pink: #ff3bac;
+      --cyan: #00e7ff;
+      --red: #ff3b30;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    body { min-height: 100vh; margin: 0; color: var(--ink); background: var(--acid); }
+    a { color: inherit; }
+    .warning { padding: .55rem 1rem; border-bottom: 4px solid var(--black); color: #fff; background: var(--black); font: 900 .85rem/1.4 "Courier New", monospace; letter-spacing: .08em; text-align: center; text-transform: uppercase; }
+    header, main, footer { width: min(72rem, calc(100% - 1.25rem)); margin-inline: auto; }
+    header { padding-block: clamp(2rem, 8vw, 5rem) 2rem; }
+    .stamp { display: inline-block; padding: .35rem .6rem; border: 3px solid var(--black); color: var(--black); background: var(--pink); font: 900 .8rem "Courier New", monospace; transform: rotate(-2deg); }
+    h1 { max-width: 12ch; margin: 1rem 0; font-size: clamp(3.2rem, 13vw, 9rem); line-height: .75; letter-spacing: -.08em; text-transform: uppercase; text-shadow: 6px 6px 0 var(--paper), 11px 11px 0 var(--cyan); }
+    .lede { max-width: 48rem; margin: 2rem 0 0; padding: 1rem; border: 4px solid var(--black); background: var(--paper); box-shadow: 8px 8px 0 var(--black); font-size: clamp(1rem, 2.5vw, 1.3rem); font-weight: 800; }
+    .grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 1rem; padding-block: 1rem 4rem; }
+    .card { grid-column: span 6; padding: clamp(1rem, 4vw, 2rem); border: 5px solid var(--black); background: var(--paper); box-shadow: 9px 9px 0 var(--black); }
+    .card:nth-child(2) { background: var(--pink); transform: rotate(.6deg); }
+    .card h2 { margin: 0 0 1rem; font-size: clamp(1.6rem, 4vw, 3rem); line-height: .95; text-transform: uppercase; }
+    .card p { line-height: 1.55; }
+    .card code { padding: .1rem .3rem; color: #fff; background: var(--black); }
+    .button { display: inline-block; margin-top: .5rem; padding: .85rem 1rem; border: 4px solid var(--black); color: var(--black); background: var(--cyan); box-shadow: 5px 5px 0 var(--black); font-weight: 1000; text-decoration: none; text-transform: uppercase; }
+    .button:hover, .button:focus-visible { color: #fff; background: var(--black); box-shadow: 5px 5px 0 var(--cyan); }
+    .fine-print { font-size: .88rem; font-weight: 700; }
+    footer { padding: 1.25rem; border: 4px solid var(--black); border-bottom: 0; color: #fff; background: var(--black); font: 700 .85rem/1.5 "Courier New", monospace; text-align: center; }
+
+    @media (max-width: 44rem) {
+      h1 { text-shadow: 4px 4px 0 var(--paper), 7px 7px 0 var(--cyan); }
+      .card { grid-column: 1 / -1; }
+      .card:nth-child(2) { transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="warning">⚠ parody mode enabled · révolution en CSS uniquement · no actual mainframe harmed ⚠</div>
+  <header>
+    <span class="stamp">SCRIPT-KIDDIE AESTHETIC REVIEW BOARD: APPROVED*</span>
+    <h1>Welcome 2 the cyber-commune</h1>
+    <p class="lede">Ici, on joue volontairement jusqu’au bout le starter pack « l33t + slogans en CAPS + antifa.exe + trois lignes de terminal vert » pour en exposer le cringe. C’est une parodie de cette esthétique, pas une profession de foi — et encore moins une invitation à attaquer quoi que ce soit.</p>
+  </header>
+
+  <main class="grid">
+    <section class="card">
+      <h2>Le vrai training est par ici</h2>
+      <p>Ce faux site voisin sert uniquement de démonstration pour le sous-domaine adjacent. Pour les cours, le programme et les vrais labs, retournez sur le portail Training propre.</p>
+      <a class="button" href="https://training.dercetech.com/">Ouvrir le vrai portail Training →</a>
+    </section>
+
+    <section class="card">
+      <h2>Manifesto.txt</h2>
+      <p>☭ Les moyens de production du box-shadow appartiennent à celles et ceux qui inspectent le DOM.</p>
+      <p>🏴 « Hack the planet » signifie ici : ouvrir DevTools, lire les headers, puis expliquer calmement le scope d’un cookie.</p>
+      <p class="fine-print">* Comité fictif. Budget fictif. Les bordures de 5 px, malheureusement, sont bien réelles.</p>
+    </section>
+  </main>
+
+  <footer>training2.dercetech.com · site-école contrôlé · aucun tracking, aucun stockage, aucun cookie créé par cette landing page</footer>
+</body>
+</html>

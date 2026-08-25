@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>D3/S3.04 · Permissions-Policy</title>
+  <meta name="description" content="Laboratoire local pour empêcher une publicité en iframe de demander l’accès à la caméra.">
+  <link rel="stylesheet" href="styles.css">
+  <script src="bootstrap.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <nav aria-label="Fil d’Ariane">Formation › Jour 3 › Section 3.04 › Permissions-Policy</nav>
+  </header>
+
+  <main>
+    <section class="course-intro" aria-labelledby="lab-title">
+      <p class="eyebrow">Header 5/5 · Capacités du navigateur</p>
+      <h1 id="lab-title">Une publicité ne devrait pas ouvrir votre caméra</h1>
+      <p class="lead">La page intègre une publicité fictive depuis une autre origine. L’attribut de l’iframe lui délègue la caméra, mais le response header du document parent garde le dernier mot.</p>
+    </section>
+
+    <p class="privacy-notice"><strong>Votre caméra reste locale.</strong> La publicité ne demande rien automatiquement. Seul son bouton explicite peut ouvrir la permission du navigateur ; le flux est affiché dans la page, sans upload, enregistrement ou stockage.</p>
+
+    <section class="policy-card" aria-labelledby="policy-title">
+      <p class="card-label">Response header du parent</p>
+      <h2 id="policy-title">Permissions-Policy</h2>
+      <pre><code id="policy-value">Lecture de la politique…</code></pre>
+      <p id="parent-status" class="status status-waiting">L’iframe vérifie si elle est autorisée à demander la caméra…</p>
+    </section>
+
+    <section class="ad-shell" aria-labelledby="ad-title">
+      <div class="ad-heading">
+        <div>
+          <p class="card-label">Contenu tiers en iframe</p>
+          <h2 id="ad-title">Publicité fictive CameraFit</h2>
+        </div>
+        <span class="ad-origin">training.dercetech.com</span>
+      </div>
+      <iframe
+        id="camera-ad"
+        title="Publicité fictive CameraFit"
+        src="https://training.dercetech.com/trainings/python-html5-security/labs/day-3/s3_04/permissions-policy/"
+        allow="camera"
+        sandbox="allow-scripts allow-same-origin"
+      ></iframe>
+    </section>
+
+    <section class="instructions" aria-labelledby="instructions-title">
+      <p class="eyebrow">Travail demandé</p>
+      <h2 id="instructions-title">Retirer la capacité au niveau du parent</h2>
+      <ol>
+        <li>Observez que la politique initiale autorise l’origine Training à demander la caméra.</li>
+        <li>Si vous le souhaitez, cliquez dans la publicité et autorisez temporairement la caméra : vous devez vous voir uniquement dans l’iframe. Le refus de la permission reste également un choix valide.</li>
+        <li>Dans Flask ou Express, remplacez le response header par <code>Permissions-Policy: camera=()</code>.</li>
+        <li>Redémarrez le serveur et rechargez la page parent sans cache.</li>
+        <li>L’iframe indique maintenant que la caméra est bloquée par la policy. Son attribut <code>allow="camera"</code> ne peut pas élargir l’autorisation fixée par le parent.</li>
+      </ol>
+    </section>
+
+    <aside class="explanation">
+      <h2>Deux niveaux, une intersection</h2>
+      <p>Pour une iframe cross-origin, la capacité doit être permise par la policy du document parent et déléguée par l’attribut <code>allow</code>. Retirer l’autorisation à l’un de ces niveaux suffit à bloquer la demande.</p>
+      <p>Permissions Policy ne remplace pas la permission de l’utilisateur : même lorsqu’une fonctionnalité est autorisée par policy, le navigateur demande encore son accord.</p>
+    </aside>
+  </main>
+
+  <footer>Jour 3 · S3.04 · Permissions-Policy</footer>
+</body>
+</html>

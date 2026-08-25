@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tableau de bord — script local</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/dashboard.js" defer></script>
+</head>
+<body>
+  <main class="card">
+    <p class="eyebrow">Jour 1 · S5 · Serveur 8012</p>
+    <h1>Capture du script</h1>
+    <p>Cette page montre uniquement la dernière valeur fictive reçue par le serveur local.</p>
+
+    <section id="waiting" class="status" aria-live="polite">
+      <h2>En attente d’une capture…</h2>
+      <p>Soumettez le formulaire sur <a href="http://127.0.0.1:8014/">le site consommateur</a>.</p>
+    </section>
+
+    <section id="capture" class="capture" aria-live="polite" hidden>
+      <h2>Mot de passe fictif capturé</h2>
+      <code id="captured-password"></code>
+      <p id="captured-at" class="muted"></p>
+    </section>
+
+    <p class="warning"><strong>N’utilisez jamais un vrai mot de passe.</strong> Cette démonstration reste sur votre ordinateur et disparaît à l’arrêt du serveur.</p>
+  </main>
+</body>
+</html>

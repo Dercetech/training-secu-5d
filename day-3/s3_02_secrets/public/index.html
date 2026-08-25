@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Secrets et variables d’environnement</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header>Formation › Jour 3 › Section 3 › Secrets</header>
+  <main>
+    <section>
+      <p class="eyebrow">03.02 · Configuration</p>
+      <h1>Un secret reste sur le serveur</h1>
+      <p class="lead">Observez une configuration qui code une fausse clé en dur et l’envoie au navigateur. Configurez ensuite le serveur avec <code>CLASSROOM_SERVICE_TOKEN</code>, sans jamais exposer sa valeur dans le JSON.</p>
+      <div>
+        <button data-mode="unsafe">Secret codé en dur</button>
+        <button data-mode="safe">Tester votre variable d’environnement</button>
+      </div>
+      <pre id="result" aria-live="polite">La route corrigée répondra 501 tant que vous ne l’aurez pas implémentée.</pre>
+    </section>
+    <aside>
+      <p class="eyebrow">Le minimum</p>
+      <pre><code>terminal : définit la variable
+serveur  : lit la variable
+navigateur : ne reçoit jamais le secret</code></pre>
+      <p>Une variable d’environnement sépare la configuration du code versionné. Elle doit être définie dans le même terminal que celui qui lance le serveur.</p>
+      <p>La valeur utilisée dans ce laboratoire est fictive et locale.</p>
+    </aside>
+  </main>
+  <script src="/app.js" defer></script>
+</body>
+</html>

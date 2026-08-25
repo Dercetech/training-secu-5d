@@ -1,0 +1,288 @@
+:root {
+  color: #111827;
+  background: #eef3f9;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-synthesis: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+.site-header,
+main,
+footer {
+  width: min(1180px, calc(100% - 2rem));
+  margin-inline: auto;
+}
+
+.site-header {
+  padding: 1.1rem 0 0.75rem;
+  color: #1d4ed8;
+  font-size: 0.92rem;
+}
+
+main {
+  display: grid;
+  gap: 1rem;
+  padding-bottom: 1rem;
+}
+
+.hero,
+.labs,
+.reminder {
+  border: 1px solid #d7e0ea;
+  border-radius: 14px;
+  background: #ffffff;
+  box-shadow: 0 12px 40px rgb(31 54 86 / 6%);
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) minmax(260px, 0.75fr);
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: center;
+  padding: clamp(2rem, 5vw, 4.5rem);
+}
+
+.eyebrow {
+  margin: 0 0 0.65rem;
+  color: #2458db;
+  font-size: 0.77rem;
+  font-weight: 850;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+h1,
+h2,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  max-width: 760px;
+  margin-bottom: 1rem;
+  font-size: clamp(2.25rem, 5vw, 4.4rem);
+  line-height: 0.98;
+  letter-spacing: -0.055em;
+}
+
+h2 {
+  margin-bottom: 0;
+  font-size: clamp(1.55rem, 3vw, 2.2rem);
+  letter-spacing: -0.035em;
+}
+
+.lead {
+  max-width: 760px;
+  margin-bottom: 0;
+  color: #526174;
+  font-size: 1.06rem;
+  line-height: 1.7;
+}
+
+.summary {
+  padding: 1.4rem;
+  border-left: 4px solid #2563eb;
+  border-radius: 10px;
+  color: #dce7f6;
+  background: #0b1423;
+}
+
+.summary strong,
+.summary span {
+  display: block;
+}
+
+.summary strong {
+  font-size: 1.45rem;
+}
+
+.summary span {
+  margin: 0.25rem 0 1rem;
+  color: #93c5fd;
+  font-weight: 750;
+}
+
+.summary p {
+  margin-bottom: 0;
+  color: #c7d4e5;
+  line-height: 1.55;
+}
+
+.labs {
+  padding: clamp(1.35rem, 4vw, 3rem);
+}
+
+.section-heading {
+  display: flex;
+  gap: 2rem;
+  align-items: end;
+  justify-content: space-between;
+  margin-bottom: 1.4rem;
+}
+
+.section-heading > p {
+  margin-bottom: 0.2rem;
+  color: #6b778b;
+}
+
+.lab-grid {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.lab-card {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 1rem;
+  align-items: center;
+  padding: 1.15rem 1.25rem;
+  border: 1px solid #d9e2ed;
+  border-radius: 11px;
+  color: inherit;
+  background: #fbfdff;
+  text-decoration: none;
+  transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+}
+
+.lab-card:hover,
+.lab-card:focus-visible {
+  border-color: #8cadff;
+  box-shadow: 0 10px 24px rgb(37 88 219 / 11%);
+  transform: translateY(-2px);
+}
+
+.lab-card:focus-visible {
+  outline: 3px solid rgb(37 88 219 / 25%);
+  outline-offset: 2px;
+}
+
+.lab-card-remote {
+  border-color: #b9cafa;
+  background: linear-gradient(100deg, #f0f5ff, #fbfdff 55%);
+}
+
+.lab-number {
+  align-self: start;
+  padding-top: 0.2rem;
+  color: #2458db;
+  font-size: 1.05rem;
+  font-weight: 900;
+}
+
+.lab-content,
+.lab-content strong,
+.lab-content > span {
+  display: block;
+}
+
+.lab-content strong {
+  margin: 0.25rem 0 0.35rem;
+  font-size: 1.15rem;
+}
+
+.lab-content > span:last-child {
+  color: #5b687b;
+  line-height: 1.5;
+}
+
+.lab-meta {
+  color: #748196;
+  font-size: 0.76rem;
+}
+
+.badge {
+  display: inline-block;
+  margin-right: 0.4rem;
+  padding: 0.2rem 0.45rem;
+  border-radius: 999px;
+  color: #1e40af;
+  background: #dbe8ff;
+  font-size: 0.68rem;
+  font-weight: 850;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.badge-remote {
+  color: #6b21a8;
+  background: #f0ddff;
+}
+
+.lab-arrow {
+  color: #2458db;
+  font-size: 1.55rem;
+  font-weight: 700;
+}
+
+.reminder {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 1rem;
+  align-items: baseline;
+  padding: 1.2rem 1.35rem;
+  border-left: 5px solid #2458db;
+}
+
+.reminder strong {
+  white-space: nowrap;
+}
+
+.reminder p {
+  margin-bottom: 0;
+  color: #526174;
+  line-height: 1.55;
+}
+
+footer {
+  padding: 0.8rem 0 1.5rem;
+  color: #708096;
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+@media (max-width: 760px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+
+  .section-heading,
+  .reminder {
+    display: block;
+  }
+
+  .section-heading > p {
+    margin-top: 0.75rem;
+  }
+
+  .reminder p {
+    margin-top: 0.45rem;
+  }
+}
+
+@media (max-width: 540px) {
+  .site-header,
+  main,
+  footer {
+    width: min(100% - 1rem, 1180px);
+  }
+
+  .hero,
+  .labs {
+    padding: 1.25rem;
+  }
+
+  .lab-card {
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+
+  .lab-arrow {
+    display: none;
+  }
+}

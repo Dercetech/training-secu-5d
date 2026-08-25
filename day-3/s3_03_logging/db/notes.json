@@ -1,0 +1,27 @@
+[
+  {
+    "id": 300,
+    "title": "Préparer le laboratoire",
+    "content": "Ouvrir les outils de développement et repérer les requêtes du tableau de bord."
+  },
+  {
+    "id": 301,
+    "title": "Niveaux de journalisation",
+    "content": "DEBUG détaille, INFO raconte le parcours normal, WARN signale un écart et ERROR une panne."
+  },
+  {
+    "id": 302,
+    "title": "Données à exclure",
+    "content": "Un mot de passe, un cookie ou un jeton de session ne doit jamais être copié dans un journal."
+  },
+  {
+    "id": 303,
+    "title": "Conserver le contexte utile",
+    "content": "La route, le résultat, l’utilisateur et un identifiant de requête suffisent souvent au diagnostic."
+  },
+  {
+    "id": 304,
+    "title": "Relire les traces",
+    "content": "Comparer les deux fichiers de logs et vérifier si une information permet de rejouer une session."
+  }
+]

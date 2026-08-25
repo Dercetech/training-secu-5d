@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Laboratoire CORS</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header>Formation › Jour 3 › Section 3 › CORS</header>
+  <main>
+    <section>
+      <p class="eyebrow">03.01 · Origines</p>
+      <h1 id="app-name">Real app</h1>
+      <p class="lead">Cette interface est servie depuis <code id="current-origin"></code>. Elle demande toujours les données à l’API de la vraie application sur le port <code>8034</code>.</p>
+      <button id="load-data" type="button">Charger les données</button>
+      <pre id="result" aria-live="polite">Ouvrez DevTools › Network, puis chargez les données.</pre>
+    </section>
+    <aside>
+      <p class="eyebrow">Votre mission</p>
+      <h2>Qui peut lire l’API ?</h2>
+      <ol>
+        <li>Comparez cette page sur les ports <code>8034</code> et <code>8038</code>.</li>
+        <li>Recherchez les headers serveur <code>Origin</code>, <code>Access-Control-Allow-Origin</code> et <code>Vary</code>.</li>
+        <li>Modifiez le serveur afin qu’il refuse toute origine autre que <code>http://127.0.0.1:8034</code>.</li>
+      </ol>
+      <p>CORS contrôle si le JavaScript d’une origine peut lire une réponse. Il ne remplace ni l’authentification ni l’autorisation.</p>
+      <p class="warning">Les données et les deux applications sont fictives et locales.</p>
+    </aside>
+  </main>
+  <script src="/app.js" defer></script>
+</body>
+</html>

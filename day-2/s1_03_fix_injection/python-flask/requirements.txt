@@ -1,0 +1,2 @@
+# Web framework; SQLite is included with Python.
+Flask>=3.1,<4

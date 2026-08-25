@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dashboard — laboratoire JWT</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body data-page="dashboard">
+  <header><nav>Formation › Jour 3 › Section 1 › Dashboard</nav><button id="logout" class="link-button">Déconnexion</button></header>
+  <main>
+    <section>
+      <p class="eyebrow">Dashboard</p>
+      <h1>Bonjour, <span id="current-name">utilisateur</span></h1>
+      <p class="lead">Le navigateur lit actuellement le rôle <code id="current-role">inconnu</code> dans un cookie JWT.</p>
+
+      <article class="lab-card">
+        <p class="eyebrow">Exercice</p>
+        <h2>Obtenir l’accès administrateur</h2>
+        <ol>
+          <li>Ouvrez DevTools › Application ou Stockage › Cookies.</li>
+          <li>Copiez la valeur du cookie <code>secu5d_auth</code> dans <a href="https://jwt.io/" target="_blank" rel="noreferrer">jwt.io</a>.</li>
+          <li>Dans le payload, remplacez <code>"role": "student"</code> par <code>"role": "admin"</code>.</li>
+          <li>Copiez le JWT modifié dans la valeur du cookie, puis rechargez la page <code>/users</code>.</li>
+        </ol>
+        <p class="notice">Le cookie n’est volontairement pas <code>HttpOnly</code>. Aucun bouton ne modifie le token : manipulez directement le cookie dans DevTools.</p>
+        <a class="button-link" href="/users">Voir les utilisateurs</a>
+      </article>
+    </section>
+
+    <aside>
+      <p class="eyebrow">À corriger</p>
+      <h2>Deux frontières, deux contrôles</h2>
+      <div class="repair-card">
+        <h3>Front-end</h3>
+        <p>Ne plus faire confiance à un payload lu dans <code>document.cookie</code>. Utiliser un cookie <code>HttpOnly</code> et demander au serveur une session déjà validée avant d’afficher une zone restreinte.</p>
+        <h3>Back-end</h3>
+        <p>Vérifier la signature, l’algorithme et l’expiration avant de lire le rôle. L’API doit refuser le cookie modifié même si l’interface a été contournée.</p>
+        <p class="boundary">Masquer l’interface améliore l’expérience ; protéger l’API impose réellement l’autorisation.</p>
+      </div>
+    </aside>
+  </main>
+  <script src="/app.js" defer></script>
+</body>
+</html>

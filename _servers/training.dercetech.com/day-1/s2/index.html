@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>D1/S2 · Cookies, SameSite et domaines</title>
+  <meta name="description" content="Laboratoire guidé pour observer la lecture JavaScript des cookies et le comportement de SameSite=Lax.">
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="icon" href="/assets/img/dt-favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../assets/lab.css?v=20260824-01">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="breadcrumb" aria-label="Fil d’Ariane">
+      <a href="https://training.dercetech.com/">Training</a><span aria-hidden="true">/</span>
+      <a href="https://training.dercetech.com/trainings/python-html5-security/">Sécuriser Python &amp; HTML5</a><span aria-hidden="true">/</span>
+      <span aria-current="page">D1/S2</span>
+    </nav>
+  </header>
+
+  <main>
+    <section class="course-intro" aria-labelledby="lab-title">
+      <p class="eyebrow">Jour 1 · Section 2 · Lab guidé</p>
+      <h1 id="lab-title">Cookies, SameSite et domaines</h1>
+      <p class="lead">Observez ce que JavaScript peut lire, quels cookies le navigateur envoie et ce qui change lorsqu’une requête vient d’un autre site.</p>
+    </section>
+
+    <p class="notice"><strong>Environnement contrôlé uniquement.</strong> Réalisez cette démonstration exclusivement sur <code>training.dercetech.com</code>, <code>training2.dercetech.com</code> et <code>training.bad-sector.games</code>, avec les identifiants fictifs fournis. N’utilisez jamais de cookie ou de compte réel.</p>
+
+    <section class="steps" aria-label="Étapes du lab">
+      <article class="step">
+        <h2>Ouvrir l’application volontairement vulnérable</h2>
+        <p><a class="button-link" href="unsafe/">Accéder à unsafe/</a></p>
+        <p>Authentifiez-vous avec <code>admin</code> / <code>password</code>. Le champ « Display name » accepte un prénom fictif, par exemple <code>Alex</code>.</p>
+      </article>
+
+      <article class="step">
+        <h2>Observer les cookies volontairement trop larges</h2>
+        <p>Ouvrez DevTools → Network, reconnectez-vous, sélectionnez <code>login.php</code> puis lisez les lignes brutes <code>Set-Cookie</code> dans Response Headers. C’est là que vous pouvez confirmer quels attributs le serveur a réellement envoyés.</p>
+        <table class="boundary-table">
+          <thead><tr><th>Attribut</th><th>État initial à constater</th></tr></thead>
+          <tbody>
+            <tr><td><code>Domain</code></td><td><code>.dercetech.com</code> : volontairement large pour la démonstration avec le sous-domaine adjacent.</td></tr>
+            <tr><td><code>HttpOnly</code></td><td>Absent : JavaScript peut lire les deux cookies.</td></tr>
+            <tr><td><code>Path</code></td><td><code>/</code> : les cookies couvrent tout le domaine indiqué.</td></tr>
+            <tr><td><code>SameSite</code></td><td><code>Lax</code> : le cookie est bloqué pour certaines requêtes provenant d’un autre site (<em>cross-site</em>), mais pas pour toutes.</td></tr>
+          </tbody>
+        </table>
+        <p>Ouvrez ensuite Application (ou Storage) → Cookies. Ici, les lignes brutes et cette vue doivent toutes deux montrer le domaine large et le chemin <code>/</code>.</p>
+        <p>Vous verrez aussi <code>demo_theme</code>, un cookie séparé qui mémorise la couleur utilisée dans l’exercice SameSite S2.03. Il est limité à <code>training.dercetech.com</code>, utilise <code>SameSite=Lax</code> et reste volontairement lisible par JavaScript : il n’a pas l’attribut <code>HttpOnly</code>.</p>
+        <p>Ce périmètre trop large est intentionnel pour le laboratoire : <code>HttpOnly</code> et <code>Secure</code> restent absents. <code>SameSite=Lax</code> est présent afin de comparer une requête en arrière-plan et une navigation GET. Ne reproduisez pas cette configuration en production.</p>
+        <p><a class="button-link" href="https://training2.dercetech.com/day-1/s2/">Ouvrir le sous-domaine adjacent</a></p>
+        <p>Cette page doit voir <code>session</code> et <code>whoami</code>, car ils couvrent <code>.dercetech.com</code>, utilisent le chemin <code>/</code> et restent lisibles par JavaScript. Elle n’envoie et ne stocke rien.</p>
+      </article>
+
+      <article class="step">
+        <h2>Lire la valeur visible</h2>
+        <p>Dans la Console, exécutez <code>document.cookie</code>. Vous devez voir <code>session</code> et <code>whoami</code> : c’est exactement ce qu’un script injecté sur cette page pourrait lire.</p>
+      </article>
+
+      <article class="step">
+        <h2>Voir ce que le site espion a reçu</h2>
+        <p><a class="button-link" href="https://training.bad-sector.games/secu-5d/day1/s2/">Ouvrir le tableau de bord du site espion</a></p>
+        <p>La page <code>unsafe/welcome.php</code> charge volontairement un script visible. Ce script lit les cookies accessibles à JavaScript, puis les envoie avec le marqueur D1/S2. Le tableau de bord affiche au maximum les 20 derniers envois fictifs, du plus récent au plus ancien. N’utilisez jamais de cookie réel.</p>
+      </article>
+
+      <article class="step">
+        <h2>Lancer l’exercice SameSite local (S2.03)</h2>
+        <p>Dans votre copie du cours, ouvrez <code>day-1/s2_03_samesite/README.md</code>. Lancez la version Flask ou la version Express.</p>
+        <p><a class="button-link" href="http://127.0.0.1:8012/">Ouvrir le site espion local</a></p>
+        <p>Le lien fonctionne lorsque votre serveur local est lancé. Les boutons <strong>Tester fetch()</strong> et <strong>Voir une photo de chat (navigation GET)</strong> se trouvent sur cette page locale, pas sur la présente page de consignes.</p>
+        <p>Les deux versions servent exactement la même page. Elles n’essaient pas de lire directement les cookies de <code>dercetech.com</code> : le navigateur sépare les cookies de ces deux sites.</p>
+      </article>
+
+      <article class="step">
+        <h2>Comparer fetch() et une navigation GET</h2>
+        <p>Vérifiez d’abord que l’application vulnérable indique un fond bleu. Dans DevTools → Application (ou Storage) → Cookies, <code>demo_theme</code> vaut <code>blue</code>. Sur le site local, cliquez sur <strong>Tester fetch()</strong>. La requête atteint la route GET, mais le navigateur ne lui joint pas le cookie de session <code>SameSite=Lax</code>. Le serveur répond <code>401</code> et la couleur reste bleue.</p>
+        <p>Cliquez ensuite sur <strong>Voir une photo de chat (navigation GET)</strong>. Ce lien trompeur ouvre la même route comme page principale. Le navigateur peut alors joindre le cookie de session <code>Lax</code>, et la route remplace <code>demo_theme=blue</code> par <code>demo_theme=red</code>.</p>
+        <p>La page distante reste affichée : elle ne redirige pas automatiquement et ne transmet ni le prénom ni les cookies au site local. Celui-ci a seulement provoqué une action authentifiée. Chaque élève voit le résultat dans son propre navigateur ; aucune couleur n’est partagée sur le serveur.</p>
+        <p><strong>Conclusion :</strong> <code>SameSite=Lax</code> bloque de nombreuses requêtes cross-site en arrière-plan, mais une route GET ne doit jamais modifier l’état d’un compte.</p>
+      </article>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <a href="https://training.dercetech.com/trainings/python-html5-security/">Retour à la formation Sécuriser Python &amp; HTML5</a>
+  </footer>
+</body>
+</html>

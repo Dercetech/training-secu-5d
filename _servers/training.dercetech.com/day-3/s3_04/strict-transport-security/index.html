@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>D3/S3.04 · Strict-Transport-Security</title>
+  <meta name="description" content="Laboratoire guidé pour observer une navigation HTTP automatiquement renforcée en HTTPS grâce à HSTS.">
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="icon" href="/assets/img/dt-favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../../assets/lab.css?v=20260825-01">
+  <link rel="stylesheet" href="styles.css?v=20260825-01">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="breadcrumb" aria-label="Fil d’Ariane">
+      <a href="https://training.dercetech.com/">Training</a><span aria-hidden="true">/</span>
+      <a href="https://training.dercetech.com/trainings/python-html5-security/">Sécuriser Python &amp; HTML5</a><span aria-hidden="true">/</span>
+      <span>Jour 3</span><span aria-hidden="true">/</span>
+      <span>Section 3.04</span><span aria-hidden="true">/</span>
+      <span aria-current="page">HSTS</span>
+    </nav>
+  </header>
+
+  <main>
+    <section class="course-intro" aria-labelledby="lab-title">
+      <p class="eyebrow">Jour 3 · S3.04 · Header 1/5</p>
+      <h1 id="lab-title">Le navigateur se souvient de HTTPS</h1>
+      <p class="lead"><code>Strict-Transport-Security</code> demande au navigateur de remplacer les prochaines navigations HTTP vers ce domaine par HTTPS, avant même de contacter le serveur en clair.</p>
+    </section>
+
+    <p class="notice"><strong>Expérience courte.</strong> Cette page envoie <code>max-age=300</code> : le souvenir dure cinq minutes. Elle n’active ni <code>includeSubDomains</code>, ni <code>preload</code>.</p>
+
+    <section class="steps" aria-label="Étapes du laboratoire HSTS">
+      <article class="step">
+        <h2>Recevoir la règle via HTTPS</h2>
+        <p>Confirmez que la barre d’adresse commence par <code>https://</code>. Dans DevTools → Network, rechargez cette page, sélectionnez <code>index.html</code>, puis trouvez ce response header :</p>
+        <pre><code>Strict-Transport-Security: max-age=300</code></pre>
+        <p>Un navigateur ignore volontairement ce header s’il le reçoit en HTTP : la confiance initiale doit venir d’une connexion HTTPS.</p>
+      </article>
+
+      <article class="step">
+        <h2>Suivre un lien volontairement écrit en HTTP</h2>
+        <p>Le lien ci-dessous contient réellement <code>http://</code>. Après avoir mémorisé HSTS, le navigateur doit l’ouvrir en HTTPS.</p>
+        <p><a class="button-link" href="http://training.dercetech.com/trainings/python-html5-security/labs/day-3/s3_04/strict-transport-security/upgrade-check.html">Tester le lien HTTP</a></p>
+        <p class="literal-url"><strong>URL demandée dans le HTML :</strong><br><code>http://training.dercetech.com/…/upgrade-check.html</code></p>
+      </article>
+
+      <article class="step">
+        <h2>Observer l’amélioration</h2>
+        <p>La page suivante affiche le protocole réellement utilisé. Dans Network, certains navigateurs montrent aussi une entrée interne <code>307</code> avec la raison <code>HSTS</code>. Le point important : aucune requête applicative ne part en HTTP.</p>
+        <p>Sur un wifi hostile, cela réduit le risque qu’une navigation ultérieure soit interceptée ou modifiée avant d’atteindre HTTPS.</p>
+      </article>
+
+      <article class="step">
+        <h2>Connaître la limite</h2>
+        <p>HSTS protège les visites suivantes, pas un tout premier accès jamais vu en HTTPS. En production, on combine HTTPS, une redirection serveur de HTTP vers HTTPS et une durée longue soigneusement préparée.</p>
+        <p><a href="details.html">Lire pourquoi ce laboratoire utilise seulement cinq minutes</a></p>
+      </article>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <a href="https://training.dercetech.com/trainings/python-html5-security/">Retour à la formation Sécuriser Python &amp; HTML5</a>
+  </footer>
+</body>
+</html>

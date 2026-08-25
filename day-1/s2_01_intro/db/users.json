@@ -1,0 +1,17 @@
+[
+  {
+    "username": "alice",
+    "password": "bonjour",
+    "name": "Alice Martin"
+  },
+  {
+    "username": "samir",
+    "password": "soleil",
+    "name": "Samir Benali"
+  },
+  {
+    "username": "lea",
+    "password": "ecole101",
+    "name": "Léa Dubois"
+  }
+]

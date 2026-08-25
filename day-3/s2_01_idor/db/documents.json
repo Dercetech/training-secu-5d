@@ -1,0 +1,38 @@
+[
+  {
+    "id": 200,
+    "owner": "alice",
+    "title": "Préparation de la démonstration",
+    "content": "Vérifier les comptes fictifs et préparer les captures du navigateur."
+  },
+  {
+    "id": 201,
+    "owner": "alice",
+    "title": "Questions pour le cours",
+    "content": "Pourquoi un identifiant de ressource ne constitue-t-il pas une autorisation ?"
+  },
+  {
+    "id": 202,
+    "owner": "alice",
+    "title": "Checklist d’Alice",
+    "content": "Tester la liste, ouvrir une note et observer la requête dans Network."
+  },
+  {
+    "id": 203,
+    "owner": "samir",
+    "title": "Notes sur les middlewares",
+    "content": "Charger la ressource avant de comparer son propriétaire à l’utilisateur connecté."
+  },
+  {
+    "id": 204,
+    "owner": "samir",
+    "title": "Cas à vérifier",
+    "content": "Prévoir les réponses 401, 403 et 404 sans révéler le contenu de la note."
+  },
+  {
+    "id": 205,
+    "owner": "samir",
+    "title": "Bilan de Samir",
+    "content": "Une interface cachée ne remplace jamais un contrôle d’autorisation côté serveur."
+  }
+]

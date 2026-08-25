@@ -1,0 +1,5 @@
+Bienvenue dans Easy Clipboard Free.
+
+Tout ce contenu est fictif et appartient au laboratoire SC8.
+Le plugin prétend simplifier le partage de notes, mais son éditeur de fichiers
+expose beaucoup trop de choses.

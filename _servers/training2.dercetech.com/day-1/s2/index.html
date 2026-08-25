@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>J3mz’ L33t website · D1/S2</title>
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; base-uri 'none'; form-action 'none'">
+  <style>
+    :root {
+      color-scheme: dark;
+      font-family: "Courier New", Courier, monospace;
+      --acid: #c9ff00;
+      --cyan: #00f5ff;
+      --pink: #ff35b8;
+      --red: #ff3131;
+      --yellow: #ffe600;
+      --black: #050505;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      min-height: 100vh;
+      margin: 0;
+      color: var(--acid);
+      background-color: var(--black);
+      background-image:
+        linear-gradient(rgba(0, 245, 255, .07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 53, 184, .07) 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background: repeating-linear-gradient(0deg, transparent 0 3px, rgba(255,255,255,.025) 3px 4px);
+    }
+
+    a { color: var(--cyan); text-decoration-thickness: 3px; }
+    a:hover { color: var(--yellow); background: #351300; }
+    header, main, footer { width: min(70rem, calc(100% - 1.25rem)); margin-inline: auto; }
+    header { padding-block: .7rem; border-bottom: 4px double var(--cyan); text-align: center; }
+    main { padding-block: 1.25rem 3rem; }
+    .blink { animation: blink 1s steps(1, end) infinite; }
+    .ticker { overflow: hidden; border: 3px outset var(--yellow); color: #000; background: var(--yellow); font-weight: 900; white-space: nowrap; }
+    .ticker span { display: inline-block; min-width: 100%; padding: .35rem; animation: scroll 12s linear infinite; }
+    .hero { margin: 1rem 0; padding: clamp(1rem, 4vw, 2.2rem); border: 6px ridge var(--pink); background: #080018; box-shadow: 12px 12px 0 var(--cyan); transform: rotate(-.35deg); }
+    .kicker { margin: 0; color: var(--cyan); font-weight: 900; letter-spacing: .16em; text-transform: uppercase; }
+    h1 { margin: .5rem 0; color: var(--pink); font-size: clamp(2.4rem, 10vw, 6.5rem); line-height: .85; text-shadow: 4px 4px 0 #541341, 8px 8px 0 #1d4852; }
+    .tagline { margin-bottom: 0; color: var(--yellow); font-size: clamp(1rem, 3vw, 1.4rem); font-weight: 900; }
+    .real-training { margin: 2rem 0; padding: 1rem; border: 5px solid var(--yellow); color: #000; background: var(--yellow); box-shadow: 8px 8px 0 var(--pink); }
+    .real-training strong { display: block; margin-bottom: .35rem; font-size: clamp(1.25rem, 4vw, 2rem); text-transform: uppercase; }
+    .real-training a { display: inline-block; margin-top: .7rem; padding: .55rem .75rem; border: 4px outset var(--cyan); color: #000; background: var(--cyan); font-weight: 900; text-decoration: none; text-transform: uppercase; }
+    .real-training a:hover, .real-training a:focus-visible { color: #fff; background: #001214; }
+    .grid { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(16rem, .75fr); gap: 1rem; margin-top: 2rem; }
+    .panel { padding: 1rem; border: 4px solid currentColor; background: #080808; box-shadow: 7px 7px 0 currentColor; }
+    .panel h2 { margin-top: 0; color: var(--yellow); font-size: 1.2rem; text-transform: uppercase; }
+    .cookies { color: var(--cyan); }
+    .scope { color: var(--pink); }
+    pre { min-height: 8rem; margin: 0; padding: 1rem; overflow: auto; border: 3px inset var(--cyan); color: #fff; background: #001214; font: 700 1rem/1.5 "Courier New", monospace; white-space: pre-wrap; overflow-wrap: anywhere; }
+    button { margin-top: 1rem; padding: .7rem 1rem; border: 4px outset var(--yellow); color: #000; background: var(--yellow); font: 900 1rem "Courier New", monospace; cursor: pointer; text-transform: uppercase; }
+    button:active { border-style: inset; }
+    ul { padding-left: 1.4rem; line-height: 1.55; }
+    li + li { margin-top: .6rem; }
+    .manifesto { margin-top: 1rem; padding: .8rem; border: 3px dashed var(--red); color: #fff; background: #3a0000; text-align: center; }
+    .manifesto strong { color: var(--yellow); }
+    .badges { display: flex; flex-wrap: wrap; gap: .5rem; justify-content: center; margin-top: 1.5rem; }
+    .badge { padding: .35rem .55rem; border: 2px solid currentColor; color: var(--cyan); background: #00171a; font-size: .75rem; font-weight: 900; transform: rotate(-1deg); }
+    .badge:nth-child(even) { color: var(--pink); transform: rotate(1deg); }
+    footer { padding: 1.25rem 0 2rem; border-top: 4px double var(--pink); color: #ddd; text-align: center; }
+
+    @keyframes blink { 50% { opacity: 0; } }
+    @keyframes scroll { from { transform: translateX(100%); } to { transform: translateX(-100%); } }
+
+    @media (prefers-reduced-motion: reduce) {
+      .blink, .ticker span { animation: none; }
+    }
+
+    @media (max-width: 46rem) {
+      .grid { grid-template-columns: 1fr; }
+      .hero { box-shadow: 7px 7px 0 var(--cyan); transform: none; }
+      .ticker span { animation-duration: 8s; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="https://training.dercetech.com/trainings/python-html5-security/">&lt;&lt; retour au training pas du tout l33t</a>
+  </header>
+
+  <div class="ticker" aria-label="Message important">
+    <span>★ UNDER CONSTRUCTION ★ BEST VIEWED WITH NETSCAPE 2.0 ★ WORKERS OF THE WEB, UNITE! ★</span>
+  </div>
+
+  <main>
+    <section class="hero">
+      <p class="kicker">D1/S2 · sibling-subdomain cyber commune</p>
+      <h1>J3mz’ L33t website<span class="blink" aria-hidden="true">_</span></h1>
+      <p class="tagline">ANTIFA.EXE chargé · capitalisme propriétaire non détecté · pare-feu en carton activé</p>
+    </section>
+
+    <aside class="real-training" aria-label="Retour à la vraie formation">
+      <strong>Vous cherchez probablement la vraie formation Security 101.</strong>
+      Ici, vous êtes sur la démo du sous-domaine adjacent : elle sert uniquement à montrer quels cookies arrivent jusque sur <code>training2.dercetech.com</code>.
+      <a href="https://training.dercetech.com/">Retour au vrai training Security 101 →</a>
+    </aside>
+
+    <div class="grid">
+      <section class="panel cookies" aria-labelledby="cookie-title">
+        <h2 id="cookie-title">🍪 Cookies visibles ici, camarade</h2>
+        <pre id="cookie-output" aria-live="polite">Lecture de document.cookie…</pre>
+        <button id="refresh" type="button">Relire document.cookie</button>
+      </section>
+
+      <section class="panel scope" aria-labelledby="scope-title">
+        <h2 id="scope-title">Ce que ce domaine peut voir</h2>
+        <ul>
+          <li>Uniquement les cookies que le navigateur expose à JavaScript sur <strong>training2.dercetech.com</strong>.</li>
+          <li>Un cookie avec <code>Domain=.dercetech.com</code> peut être visible ici s’il correspond aussi au chemin et n’est pas <code>HttpOnly</code>.</li>
+          <li>Un cookie host-only créé sur <strong>training.dercetech.com</strong> reste invisible ici.</li>
+          <li>Un cookie <code>HttpOnly</code> reste invisible à JavaScript, même sur le bon domaine.</li>
+          <li>Les cookies de <strong>training.bad-sector.games</strong> appartiennent à un autre domaine et restent invisibles ici.</li>
+        </ul>
+      </section>
+    </div>
+
+    <p class="manifesto"><strong>Pas de magie noire&nbsp;:</strong> les cookies ne traversent pas les domaines tout seuls. Le navigateur envoie seulement ceux dont le domaine, le chemin et les règles de sécurité correspondent à la page.</p>
+
+    <div class="badges" aria-label="Badges de cette magnifique page personnelle">
+      <span class="badge">NO EXFILTRATION</span>
+      <span class="badge">NO DATABASE</span>
+      <span class="badge">100% HAND-CODED CHAOS</span>
+      <span class="badge">☭ CSS MEANS COLLECTIVE STYLE SHEETS</span>
+      <span class="badge">HACK THE PLANET*</span>
+    </div>
+  </main>
+
+  <footer>
+    * La planète du lab uniquement. Cette page lit localement <code>document.cookie</code>&nbsp;: aucun POST, aucun stockage, aucun envoi réseau.
+  </footer>
+
+  <script>
+    const output = document.querySelector('#cookie-output');
+
+    function showVisibleCookies() {
+      output.textContent = document.cookie || '(aucun cookie visible par JavaScript sur training2.dercetech.com)';
+    }
+
+    document.querySelector('#refresh').addEventListener('click', showVisibleCookies);
+    showVisibleCookies();
+  </script>
+</body>
+</html>

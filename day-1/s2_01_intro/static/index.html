@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Connexion — sécurité 101</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <main class="shell">
+    <section class="card" aria-labelledby="page-title">
+      <p class="eyebrow">Jour 1 · Introduction</p>
+
+      <div id="login-view">
+        <h1 id="page-title">Se connecter</h1>
+        <p class="lead">Choisissez un compte fictif pour découvrir une requête de connexion et un JWT.</p>
+
+        <form id="login-form">
+          <label for="username">Nom d’utilisateur</label>
+          <input id="username" name="username" autocomplete="username" value="alice" required>
+
+          <label for="password">Mot de passe</label>
+          <input id="password" name="password" type="password" autocomplete="current-password" value="bonjour" required>
+
+          <button type="submit">Connexion</button>
+        </form>
+
+        <p id="login-status" class="status" role="status" aria-live="polite"></p>
+      </div>
+
+      <div id="dashboard-view" hidden>
+        <p class="eyebrow">Tableau de bord</p>
+        <h1>Hi, <span id="display-name"></span></h1>
+        <p class="lead">La même page fonctionne avec le serveur Flask ou le serveur Express.</p>
+        <div class="actions">
+          <button id="me-button" type="button">Appeler /api/me</button>
+          <button id="logout-button" type="button" class="secondary">Déconnexion</button>
+        </div>
+        <pre id="me-result" aria-live="polite">Cliquez sur « Appeler /api/me » pour vérifier le JWT.</pre>
+        <p id="dashboard-status" class="status" role="status" aria-live="polite"></p>
+      </div>
+    </section>
+
+    <aside class="note" aria-label="Contexte pédagogique">
+      <p class="eyebrow">À observer</p>
+      <h2>Une interface, deux serveurs</h2>
+      <ul>
+        <li>le formulaire envoie du JSON à <code>/api/login</code> ;</li>
+        <li>le serveur vérifie <code>db/users.json</code> ;</li>
+        <li>le serveur signe un JWT et le place dans un cookie local ;</li>
+        <li><code>/api/me</code> vérifie ce JWT et renvoie l’utilisateur.</li>
+      </ul>
+    </aside>
+  </main>
+
+  <script src="/app.js" defer></script>
+</body>
+</html>

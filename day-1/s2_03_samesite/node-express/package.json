@@ -1,0 +1,13 @@
+{
+  "name": "secu5d-s2-samesite-express",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Serveur Express minimal pour la démonstration SameSite=Lax",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}

@@ -1,0 +1,71 @@
+pre {
+  max-width: 100%;
+  overflow-x: auto;
+  padding: 1rem;
+  border-radius: .55rem;
+  color: var(--code-text);
+  background: var(--code);
+}
+
+pre code {
+  padding: 0;
+}
+
+.literal-url {
+  overflow-wrap: anywhere;
+}
+
+#final-url code {
+  overflow-wrap: anywhere;
+  word-break: break-all;
+}
+
+.protocol-card {
+  margin-bottom: 2rem;
+  padding: clamp(1.5rem, 5vw, 2.5rem);
+  border: 1px solid var(--line);
+  border-left: .45rem solid var(--blue);
+  border-radius: .8rem;
+  background: var(--paper);
+  box-shadow: 0 10px 30px rgba(20, 33, 61, .06);
+}
+
+.protocol-label {
+  margin: 0;
+  color: var(--muted);
+  font-size: .82rem;
+  font-weight: 800;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.protocol-value {
+  margin: .4rem 0;
+  font-size: clamp(2.5rem, 8vw, 5rem);
+  font-weight: 850;
+  line-height: 1;
+}
+
+.protocol-card p:last-child {
+  margin-bottom: 0;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.protocol-success {
+  border-left-color: #198754;
+  background: #f1fbf5;
+}
+
+.protocol-success .protocol-value {
+  color: #146c43;
+}
+
+.protocol-warning {
+  border-left-color: #b54708;
+  background: #fff8ef;
+}
+
+.protocol-warning .protocol-value {
+  color: #93400b;
+}

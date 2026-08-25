@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bad Sector Training</title>
+  <meta name="description" content="The disposable hostile side of Dercetech Training.">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="theme-color" content="#090909">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; base-uri 'none'; form-action 'none'">
+  <style>
+    :root {
+      color-scheme: dark;
+      --black: #090909;
+      --panel: #121212;
+      --ink: #f4efe4;
+      --muted: #bcb5a8;
+      --red: #ef3f2f;
+      --amber: #efb64d;
+      --line: #37332e;
+      font-family: "Courier New", Courier, monospace;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      min-height: 100vh;
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 82% 10%, rgba(239, 63, 47, .12), transparent 28rem),
+        var(--black);
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background: repeating-linear-gradient(0deg, rgba(255,255,255,.025) 0 1px, transparent 1px 4px);
+    }
+
+    main {
+      width: min(62rem, calc(100% - 2rem));
+      min-height: 100vh;
+      display: grid;
+      align-items: center;
+      margin-inline: auto;
+      padding-block: clamp(2rem, 8vw, 6rem);
+    }
+
+    article {
+      position: relative;
+      padding: clamp(1.25rem, 5vw, 3.5rem);
+      border: 1px solid var(--line);
+      border-top: 6px solid var(--red);
+      background: var(--panel);
+      box-shadow: 1rem 1rem 0 rgba(239, 63, 47, .12);
+    }
+
+    .label {
+      margin: 0 0 1.25rem;
+      color: var(--red);
+      font-size: .82rem;
+      font-weight: 900;
+      letter-spacing: .14em;
+    }
+
+    h1 {
+      max-width: 11ch;
+      margin: 0;
+      font-size: clamp(3rem, 11vw, 7.5rem);
+      line-height: .82;
+      letter-spacing: -.07em;
+    }
+
+    .tagline {
+      max-width: 42rem;
+      margin: 1.5rem 0 2.5rem;
+      color: var(--amber);
+      font-size: clamp(1.05rem, 2.5vw, 1.4rem);
+      font-weight: 900;
+    }
+
+    .copy {
+      max-width: 45rem;
+      color: var(--muted);
+      font: clamp(1rem, 2vw, 1.18rem)/1.65 ui-sans-serif, system-ui, sans-serif;
+    }
+
+    .copy strong {
+      color: var(--ink);
+    }
+
+    .portal {
+      display: inline-block;
+      margin: .35rem 0 1.4rem;
+      padding: .85rem 1rem;
+      border: 2px solid var(--red);
+      color: var(--ink);
+      background: #1b0c0a;
+      font-weight: 900;
+      overflow-wrap: anywhere;
+      text-decoration: none;
+    }
+
+    .portal:hover,
+    .portal:focus-visible {
+      color: var(--black);
+      background: var(--red);
+      outline: 3px solid var(--amber);
+      outline-offset: 3px;
+    }
+
+    .final {
+      color: var(--ink);
+      font-weight: 800;
+    }
+
+    @media (max-width: 36rem) {
+      article { box-shadow: .5rem .5rem 0 rgba(239, 63, 47, .12); }
+      h1 { letter-spacing: -.055em; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <article aria-labelledby="title">
+      <p class="label">BAD SECTOR TRAINING</p>
+      <h1 id="title">BAD SECTOR TRAINING</h1>
+      <p class="tagline">Zero budget. Maximum hostility. No apologies.</p>
+
+      <div class="copy">
+        <p>This is the disposable domain we spin up when the real training needs something broken, corrupted, or deliberately hostile.</p>
+        <p><strong>We don’t host the courses here.<br>We host the bad sectors.</strong></p>
+        <p>The actual training lives on the clean side:</p>
+        <a class="portal" href="https://training.dercetech.com/">→ https://training.dercetech.com</a>
+        <p class="final">Come back when you’re ready to get your hands dirty.</p>
+      </div>
+    </article>
+  </main>
+</body>
+</html>

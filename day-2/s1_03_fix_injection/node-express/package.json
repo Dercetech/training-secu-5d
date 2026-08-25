@@ -1,0 +1,16 @@
+{
+  "name": "secu5d-day2-s1-03-fix-injection-express",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Recherche SQLite à corriger pour le cours Sécurité 101",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=22.13"
+  },
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}

@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Console SQL locale — sécurité 101</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header class="course-header">
+    <nav aria-label="Fil d’Ariane">
+      <span>Formation</span><span aria-hidden="true">›</span>
+      <span>Jour 2</span><span aria-hidden="true">›</span>
+      <span>Section 1</span><span aria-hidden="true">›</span>
+      <strong>Introduction SQL</strong>
+    </nav>
+  </header>
+
+  <main class="workspace">
+    <section class="lesson" aria-labelledby="page-title">
+      <p class="eyebrow">01 · Le geste</p>
+      <h1 id="page-title">Interroger une base locale</h1>
+      <p class="lead">
+        Écrivez une requête <code>SELECT</code>, exécutez-la, puis observez les
+        colonnes et les lignes renvoyées par SQLite.
+      </p>
+
+      <div class="examples" aria-label="Exemples de requêtes">
+        <button type="button" data-query="SELECT * FROM notes;">Toutes les notes</button>
+        <button type="button" data-query="SELECT title, author FROM notes WHERE is_public = 1;">Notes publiques</button>
+        <button type="button" data-query="SELECT author, COUNT(*) AS total FROM notes GROUP BY author ORDER BY total DESC;">Compter par auteur</button>
+      </div>
+
+      <form id="query-form">
+        <label for="sql">Requête SQL</label>
+        <textarea id="sql" name="sql" rows="7" spellcheck="false">SELECT * FROM notes;</textarea>
+        <div class="form-actions">
+          <button class="primary" type="submit">Exécuter la requête</button>
+          <span id="status" role="status" aria-live="polite"></span>
+        </div>
+      </form>
+
+      <section class="results" aria-labelledby="results-title">
+        <div class="results-heading">
+          <h2 id="results-title">Résultat</h2>
+          <span id="row-count"></span>
+        </div>
+        <div id="table-container" class="table-container">
+          <p class="empty">Exécutez une requête pour afficher les données.</p>
+        </div>
+      </section>
+    </section>
+
+    <aside class="reference" aria-labelledby="reference-title">
+      <p class="eyebrow">Le minimum</p>
+      <h2 id="reference-title">Une table <code>notes</code></h2>
+      <pre><code>SELECT *
+FROM notes;
+
+SELECT title, author
+FROM notes
+WHERE is_public = 1;</code></pre>
+
+      <h3>Colonnes disponibles</h3>
+      <dl>
+        <div><dt>id</dt><dd>nombre</dd></div>
+        <div><dt>title</dt><dd>texte</dd></div>
+        <div><dt>body</dt><dd>texte</dd></div>
+        <div><dt>author</dt><dd>texte</dd></div>
+        <div><dt>is_public</dt><dd>0 ou 1</dd></div>
+      </dl>
+
+      <p class="boundary">
+        Cette première étape est une console SQL locale. L’injection sera
+        étudiée ensuite, lorsqu’une application collera une saisie dans une
+        requête qu’elle construit elle-même.
+      </p>
+    </aside>
+  </main>
+
+  <script src="/app.js" defer></script>
+</body>
+</html>

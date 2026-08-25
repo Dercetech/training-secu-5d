@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cookies — sécurité 101</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <main class="shell">
+    <section class="card" aria-labelledby="page-title">
+      <p class="eyebrow">Jour 1 · Cookies</p>
+
+      <div id="login-view">
+        <h1 id="page-title">Tester un cookie</h1>
+        <p class="lead">Connectez-vous, observez le cookie, puis modifiez ses paramètres côté serveur.</p>
+
+        <form id="login-form">
+          <label for="username">Nom d’utilisateur</label>
+          <input id="username" name="username" autocomplete="username" value="admin" required>
+
+          <label for="password">Mot de passe</label>
+          <input id="password" name="password" type="password" autocomplete="current-password" value="password" required>
+
+          <button type="submit">Connexion</button>
+        </form>
+
+        <p id="login-status" class="status" role="status" aria-live="polite"></p>
+      </div>
+
+      <div id="dashboard-view" hidden>
+        <p class="eyebrow">Tableau de bord</p>
+        <h1>Hi, <span id="display-name"></span></h1>
+        <p class="lead">La session fonctionne tant que le navigateur renvoie le cookie au serveur.</p>
+
+        <div class="actions">
+          <button id="read-cookie-button" type="button">Lire document.cookie</button>
+          <button id="me-button" type="button" class="secondary">Demander /api/me</button>
+          <button id="logout-button" type="button" class="secondary">Déconnexion</button>
+        </div>
+
+        <pre id="result" aria-live="polite">Prêt.</pre>
+      </div>
+    </section>
+
+    <aside class="note" aria-label="Consigne pédagogique">
+      <p class="eyebrow">À expérimenter</p>
+      <h2>Une option à la fois</h2>
+      <p>Dans le serveur choisi, décommentez :</p>
+      <ul>
+        <li><code>HttpOnly</code></li>
+        <li><code>Secure</code></li>
+        <li><code>SameSite</code></li>
+        <li><code>Path</code></li>
+        <li><code>Domain</code></li>
+        <li><code>Max-Age</code></li>
+      </ul>
+      <p>Redémarrez, supprimez l’ancien cookie, reconnectez-vous et comparez dans DevTools.</p>
+    </aside>
+  </main>
+
+  <script src="/app.js" defer></script>
+</body>
+</html>

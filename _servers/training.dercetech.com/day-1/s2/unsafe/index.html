@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="fr">
+<meta charset="utf-8">
+<title>Lab A · login PHP</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  body { font: 16px/1.4 system-ui, sans-serif; max-width: 28rem; margin: 12vh auto; color: #0B1220; }
+  label { display: block; margin: .8rem 0 .25rem; font-weight: 650; }
+  input { width: 100%; padding: .5rem .6rem; font: inherit; }
+  button { margin-top: 1.1rem; padding: .55rem 1rem; font: inherit; background: #1D4ED8; color: #fff; border: 0; cursor: pointer; }
+  .hint { color: #64748B; font-size: .9rem; }
+  .warning { padding: .75rem; border-left: 4px solid #DC2626; background: #FEF2F2; color: #991B1B; }
+  .status { padding: .75rem; border-left: 4px solid #16A34A; background: #F0FDF4; color: #166534; }
+  .error { padding: .75rem; border-left: 4px solid #DC2626; background: #FEF2F2; color: #991B1B; font-weight: 650; }
+  .secondary { background: #475569; }
+</style>
+<h1>Login</h1>
+<p class="hint">Compte démo : <code>admin</code> / <code>password</code>. Le prénom n’a rien à faire dans un cookie.</p>
+<p class="warning"><strong>Vulnérabilité volontaire :</strong> ce formulaire révèle « User not found » ou « Wrong password ». Comparez les deux réponses dans Network.</p>
+<p class="hint"><strong>Domain / Path :</strong> Application/Storage affiche toujours le host et le path <em>effectifs</em> calculés par le navigateur. Pour savoir ce que PHP a vraiment envoyé, regardez Network → <code>login.php</code> → Response Headers → lignes brutes <code>Set-Cookie</code>.</p>
+<p id="clear-status" class="status" role="status" hidden>Les cookies de démo <code>session</code>, <code>whoami</code> et <code>demo_theme</code> ont été supprimés.</p>
+<p id="login-error" class="error" role="alert" hidden></p>
+<form id="login-form" method="post" action="login.php">
+  <label>Username <input name="username" autocomplete="username" required></label>
+  <label>Password <input name="password" type="password" autocomplete="current-password" required></label>
+  <label>Display name <input name="display_name" placeholder="Anne" required></label>
+  <button type="submit">Entrer</button>
+</form>
+<form method="post" action="login.php">
+  <input type="hidden" name="action" value="clear_cookies">
+  <button class="secondary" type="submit">Effacer les cookies de démo</button>
+</form>
+<script>
+const params = new URLSearchParams(window.location.search);
+if (params.get("cleared") === "1") {
+  document.querySelector("#clear-status").hidden = false;
+  history.replaceState(null, "", window.location.pathname);
+}
+
+const loginForm = document.querySelector("#login-form");
+const loginError = document.querySelector("#login-error");
+const allowedLoginErrors = new Set(["User not found", "Wrong password"]);
+
+loginForm.addEventListener("submit", async (event) => {
+  event.preventDefault();
+  loginError.hidden = true;
+
+  try {
+    const response = await fetch(loginForm.action, {
+      method: "POST",
+      body: new FormData(loginForm),
+      credentials: "same-origin",
+    });
+
+    if (response.status === 401) {
+      const serverMessage = (await response.text()).trim();
+      loginError.textContent = allowedLoginErrors.has(serverMessage)
+        ? serverMessage
+        : "Login failed";
+      loginError.hidden = false;
+      return;
+    }
+
+    if (response.redirected) {
+      window.location.assign(response.url);
+      return;
+    }
+
+    loginError.textContent = "Login failed";
+    loginError.hidden = false;
+  } catch {
+    loginError.textContent = "Network error";
+    loginError.hidden = false;
+  }
+});
+</script>

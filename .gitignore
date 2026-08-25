@@ -1,0 +1,13 @@
+# Local deployment configuration. Keep hosting identifiers and remote paths out
+# of source control; use .env.local.tpl as the committed setup template.
+/.env.local
+
+# Local Python bytecode produced while running the labs or syntax checks.
+__pycache__/
+.venv/
+users.db
+.DS_Store
+
+# Private drafting and handoff notes kept only in the local checkout.
+lab-prompt.txt
+HANDOFF-*.md

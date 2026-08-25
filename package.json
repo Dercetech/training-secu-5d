@@ -1,0 +1,11 @@
+{
+  "name": "python-html5-security-labs",
+  "private": true,
+  "scripts": {
+    "deploy:sync": "bash scripts/sync-deploy.sh sync",
+    "deploy:sync:watch": "bash scripts/sync-deploy.sh watch",
+    "deploy:training2:sync": "bash scripts/sync-deploy.sh sync training2.dercetech.com",
+    "deploy:second-domain-root:sync": "bash scripts/sync-deploy.sh sync second-domain-root",
+    "sc8:scratch": "bash scripts/scratch-incinerator.sh"
+  }
+}

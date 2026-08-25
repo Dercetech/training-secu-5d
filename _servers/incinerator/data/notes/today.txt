@@ -1,0 +1,5 @@
+À faire aujourd’hui
+
+- ouvrir une note par son URL publique ;
+- créer une page HTML ou un script PHP ;
+- découvrir ce que l’explorateur data/ ne montre pas.

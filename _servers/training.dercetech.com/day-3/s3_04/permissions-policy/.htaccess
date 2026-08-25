@@ -1,0 +1,6 @@
+<IfModule mod_headers.c>
+  Header always set Permissions-Policy "camera=(self), microphone=(), geolocation=()"
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self'; media-src blob:; img-src 'self' data:; object-src 'none'; base-uri 'none'"
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Cache-Control "no-store"
+</IfModule>

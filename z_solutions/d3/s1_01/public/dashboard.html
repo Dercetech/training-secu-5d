@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dashboard — solution JWT</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body data-page="dashboard">
+  <header><nav>Solution › Jour 3 › Section 1 › Dashboard</nav><button id="logout" class="link-button">Déconnexion</button></header>
+  <main>
+    <section>
+      <p class="eyebrow">Session validée</p>
+      <h1>Bonjour, <span id="current-name">utilisateur</span></h1>
+      <p class="lead">Le serveur a validé la signature avant de renvoyer le rôle <code id="current-role">inconnu</code>.</p>
+      <article class="lab-card">
+        <h2>Correction active</h2>
+        <p>Le token reste dans un cookie <code>HttpOnly</code>. Le navigateur ne le décode plus et utilise <code>GET /api/session</code>.</p>
+        <a class="button-link" href="/users">Voir les utilisateurs</a>
+      </article>
+    </section>
+    <aside>
+      <p class="eyebrow">Contrôles</p>
+      <h2>Une décision serveur</h2>
+      <div class="repair-card">
+        <p>Algorithme autorisé, signature, expiration, utilisateur et rôle sont vérifiés avant toute donnée restreinte.</p>
+        <p class="boundary">Le front-end adapte l’interface ; l’API impose l’autorisation.</p>
+      </div>
+    </aside>
+  </main>
+  <script src="/app.js" defer></script>
+</body>
+</html>

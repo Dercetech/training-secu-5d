@@ -1,0 +1,8 @@
+[
+  {
+    "id": "user-alice",
+    "user": "alice",
+    "pwd": "alice123",
+    "role": "user"
+  }
+]

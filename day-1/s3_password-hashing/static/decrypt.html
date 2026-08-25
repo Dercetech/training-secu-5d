@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>« Décrypter » SHA-256 — sécurité 101</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <main class="shell">
+    <section class="card" aria-labelledby="page-title">
+      <p class="eyebrow">Jour 1 · Recherche pédagogique</p>
+      <h1 id="page-title">« Décrypter » un SHA-256</h1>
+      <p class="lead">Choisissez une plage de 1 à 10 caractères. Le navigateur génère localement un texte alphanumérique dans cette plage et affiche uniquement son hash.</p>
+
+      <div class="range-fields">
+        <div>
+          <label for="min-length">Longueur minimale</label>
+          <input id="min-length" name="min_length" type="number" min="1" max="10" value="1" required>
+        </div>
+        <div>
+          <label for="max-length">Longueur maximale</label>
+          <input id="max-length" name="max_length" type="number" min="1" max="10" value="3" required>
+        </div>
+      </div>
+
+      <label for="hash-input">Hash SHA-256</label>
+      <input
+        id="hash-input"
+        name="hash"
+        inputmode="text"
+        maxlength="64"
+        minlength="64"
+        pattern="[0-9a-fA-F]{64}"
+        autocomplete="off"
+        spellcheck="false"
+        readonly
+        required
+      >
+
+      <div class="actions">
+        <button id="decrypt-button" type="button">D3cryp1</button>
+        <button id="challenge-button" type="button" class="secondary">Nouveau hash</button>
+        <button id="shortest-button" type="button" class="secondary">Shortest (aaaa)</button>
+        <button id="longest-button" type="button" class="secondary">Longest (9999)</button>
+      </div>
+      <pre id="result" aria-live="polite">Création locale du hash…</pre>
+      <p><a href="/">← Revenir au benchmark SHA-256</a></p>
+    </section>
+
+    <aside class="note" aria-label="Avertissement pédagogique">
+      <p class="eyebrow">Spoiler</p>
+      <h2>Nobody decrypts anything here, kid.</h2>
+      <p>Le serveur ne remonte pas le temps. Il essaie des textes, calcule leur SHA-256 et s'arrête quand il trouve le même hash.</p>
+      <p>Le texte secret respecte seulement <code>a-z</code>, <code>A-Z</code>, <code>0-9</code> et la plage choisie, sans jamais dépasser 4 caractères.</p>
+    </aside>
+  </main>
+
+  <script src="/decrypt.js" defer></script>
+</body>
+</html>

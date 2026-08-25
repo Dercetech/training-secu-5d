@@ -1,0 +1,10 @@
+<Files "example.txt">
+  Require all denied
+</Files>
+
+<IfModule mod_headers.c>
+  <Files "library.js">
+    Header set Access-Control-Allow-Origin "https://training.dercetech.com"
+    Header append Vary "Origin"
+  </Files>
+</IfModule>

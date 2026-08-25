@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Une note · Laboratoire IDOR</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header><nav>Formation › Jour 3 › Section 2 › IDOR</nav></header>
+  <main class="shell">
+    <section class="workspace note-page">
+      <a class="back-link" href="/dashboard/">← Revenir à mes notes</a>
+      <p id="route-label" class="eyebrow">Chargement de la route…</p>
+      <article id="note-card" class="note-detail" hidden>
+        <p class="note-id">Document <span id="note-id"></span></p>
+        <h1 id="note-title"></h1>
+        <p id="note-content" class="note-content"></p>
+        <p class="note-owner">Propriétaire enregistré : <strong id="note-owner"></strong></p>
+      </article>
+      <div id="note-error" class="error-card" aria-live="polite">Chargement de la note…</div>
+    </section>
+    <aside>
+      <p class="eyebrow">Observez l’URL</p>
+      <pre><code id="route-example">/…/notes/…/</code></pre>
+      <p id="route-explanation">Le mode choisi sur le tableau de bord détermine la route appelée.</p>
+      <p>Un identifiant permet de retrouver une ligne. Il ne prouve jamais que l’utilisateur a le droit de la consulter.</p>
+    </aside>
+  </main>
+  <script src="/note.js" defer></script>
+</body>
+</html>

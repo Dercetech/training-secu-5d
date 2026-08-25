@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Journal d’audit · Laboratoire logging</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header><nav>Formation › Jour 3 › Section 3 › Logging</nav></header>
+  <main class="shell">
+    <section class="workspace">
+      <div id="login-view">
+        <p class="eyebrow">03.03 · Journalisation</p>
+        <h1>Connexion et traces d’audit</h1>
+        <p class="lead">Les deux connexions donnent accès à la même application. Seule la façon de journaliser change.</p>
+        <form id="login-form" class="login-form">
+          <label for="username">Identifiant</label>
+          <input id="username" name="username" autocomplete="username" value="alice" required>
+          <label for="password">Mot de passe</label>
+          <input id="password" name="password" type="password" autocomplete="current-password" value="alice123" required>
+          <div class="login-actions">
+            <button type="submit" name="mode" value="unsafe" class="button-danger">Connexion dangereuse</button>
+            <button type="submit" name="mode" value="safe">Connexion sûre — à implémenter</button>
+          </div>
+        </form>
+        <p id="login-message" class="message" aria-live="polite"></p>
+      </div>
+
+      <div id="dashboard-view" hidden>
+        <div class="dashboard-heading">
+          <div>
+            <p class="eyebrow">03.03 · Tableau de bord</p>
+            <h1>Bonjour, <span id="display-name"></span></h1>
+          </div>
+          <button id="logout" class="button-secondary" type="button">Se déconnecter</button>
+        </div>
+        <div id="mode-banner" class="mode-banner"></div>
+        <p class="lead">Chaque ouverture du tableau de bord et chaque lecture de note ajoute une ligne au journal actif.</p>
+        <div id="notes" class="notes-grid" aria-live="polite"></div>
+        <p id="dashboard-message" class="message" aria-live="polite"></p>
+      </div>
+    </section>
+
+    <aside>
+      <div id="login-hint">
+        <p class="eyebrow">Comptes fictifs</p>
+        <div class="credential"><strong>Alice</strong><code>alice / alice123</code></div>
+        <div class="credential"><strong>Samir</strong><code>samir / samir456</code></div>
+        <p>La connexion dangereuse active un logger qui recopie tous les headers « pour la traçabilité ». L’équipe croyait que l’authentification resterait toujours dans un cookie.</p>
+        <p class="eyebrow aside-section">Autre transport</p>
+        <pre><code>localStorage.setItem("audit_lab_jwt", token)
+
+Authorization: Bearer &lt;token&gt;</code></pre>
+        <p>Avec Bearer, le front conserve la chaîne et ajoute lui-même le header. Le navigateur ne le fait pas automatiquement.</p>
+        <p class="architect-note"><strong>Avis d’architecte :</strong> pour une application web classique same-origin, je préfère généralement un cookie <code>HttpOnly</code>, <code>Secure</code> et <code>SameSite</code>. Un Bearer dans <code>localStorage</code> est pratique pour certains clients API, mais une XSS peut le lire. Ce n’est pas « plus moderne » par défaut : c’est un compromis différent.</p>
+      </div>
+      <div id="audit-hint" hidden>
+        <p class="eyebrow">Journal actif</p>
+        <code id="log-file" class="file-path"></code>
+        <pre><code>headers={
+  "authorization":"Bearer &lt;jwt&gt;",
+  "accept":"*/*", …
+}
+
+timestamp LEVEL logger - event key=value</code></pre>
+        <p>Les traces ressemblent à une sortie Log4j. Comparez les champs, pas seulement les niveaux.</p>
+        <p class="warning">Les fichiers sont locaux, fictifs et ignorés par Git.</p>
+      </div>
+    </aside>
+  </main>
+  <script src="/app.js" defer></script>
+</body>
+</html>

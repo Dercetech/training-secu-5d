@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>D3/S3.04 · Content-Security-Policy</title>
+  <meta name="description" content="Laboratoire local pour autoriser une origine JavaScript précise avec Content-Security-Policy.">
+  <link rel="stylesheet" href="styles.css">
+  <script src="bootstrap.js" defer></script>
+  <script src="https://training.dercetech.com/trainings/python-html5-security/labs/day-3/s3_04/content-security-policy/trusted-widget.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <nav aria-label="Fil d’Ariane">Formation › Jour 3 › Section 3.04 › Content-Security-Policy</nav>
+  </header>
+
+  <main>
+    <section class="course-intro" aria-labelledby="lab-title">
+      <p class="eyebrow">Header 4/5 · Liste d’autorisation</p>
+      <h1 id="lab-title">Quels scripts ont le droit de tourner ?</h1>
+      <p class="lead">La page demande trois types de code : un fichier local, un composant hébergé sur Training et un script inline. La CSP décide lesquels peuvent s’exécuter.</p>
+    </section>
+
+    <section class="policy-card" aria-labelledby="policy-title">
+      <p class="card-label">Response header observé</p>
+      <h2 id="policy-title">Content-Security-Policy</h2>
+      <pre><code id="policy-value">Lecture de la politique…</code></pre>
+    </section>
+
+    <section class="signal-grid" aria-label="Résultats des trois scripts">
+      <article class="signal-card">
+        <p class="card-label">01 · Même origine</p>
+        <h2>Script local</h2>
+        <p id="local-status" class="status status-waiting">En attente du fichier local…</p>
+        <p><code>script-src 'self'</code> doit lui permettre de fonctionner.</p>
+      </article>
+
+      <article class="signal-card">
+        <p class="card-label">02 · Origine Training</p>
+        <h2>Composant distant</h2>
+        <p id="trusted-status" class="status status-blocked">Bloqué : l’origine Training n’est pas encore dans <code>script-src</code>.</p>
+        <button id="trusted-button" type="button" disabled>Tester le composant</button>
+      </article>
+
+      <article class="signal-card">
+        <p class="card-label">03 · Code inline</p>
+        <h2>« Injection » dans la page</h2>
+        <p id="inline-status" class="status status-protected">Bloqué comme prévu : aucun code inline n’est autorisé.</p>
+        <p>Cette protection doit rester active après votre correction.</p>
+      </article>
+    </section>
+
+    <section class="instructions" aria-labelledby="instructions-title">
+      <p class="eyebrow">Travail demandé</p>
+      <h2 id="instructions-title">Autoriser précisément, sans ouvrir les vannes</h2>
+      <ol>
+        <li>Dans Network, sélectionnez ce document et lisez son response header <code>Content-Security-Policy</code>.</li>
+        <li>Dans la Console, repérez le refus concernant <code>training.dercetech.com</code> et celui concernant le script inline.</li>
+        <li>Dans Flask ou Express, ajoutez uniquement <code>https://training.dercetech.com</code> à la directive <code>script-src</code>.</li>
+        <li>Ne remplacez pas la liste par <code>*</code> et n’ajoutez pas <code>'unsafe-inline'</code>.</li>
+        <li>Redémarrez le serveur et rechargez sans cache : les cartes 01 et 02 fonctionnent, tandis que la carte 03 reste protégée.</li>
+      </ol>
+    </section>
+
+    <aside class="explanation">
+      <h2>Le bon aspect illustré</h2>
+      <p>La CSP permet d’accorder une capacité à une origine connue sans accorder la même confiance à tous les scripts. Elle limite l’impact d’une injection, mais ne remplace ni l’échappement HTML, ni la validation, ni la suppression des usages dangereux de <code>innerHTML</code>.</p>
+    </aside>
+  </main>
+
+  <footer>Jour 3 · S3.04 · Content-Security-Policy</footer>
+
+  <script>
+    document.querySelector("#inline-status").className = "status status-danger";
+    document.querySelector("#inline-status").textContent = "Le script inline s’est exécuté : la politique est devenue trop permissive.";
+  </script>
+</body>
+</html>

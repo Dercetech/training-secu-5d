@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>D3/S3.04 · Résultat HSTS</title>
+  <meta name="description" content="Résultat du test de renforcement d’une navigation HTTP en HTTPS par HSTS.">
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="icon" href="/assets/img/dt-favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../../assets/lab.css?v=20260825-01">
+  <link rel="stylesheet" href="styles.css?v=20260825-01">
+  <script src="protocol.js?v=20260825-01" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="breadcrumb" aria-label="Fil d’Ariane">
+      <a href="index.html">HSTS</a><span aria-hidden="true">/</span>
+      <span aria-current="page">Résultat</span>
+    </nav>
+  </header>
+
+  <main>
+    <section class="course-intro" aria-labelledby="result-title">
+      <p class="eyebrow">Résultat de l’expérience</p>
+      <h1 id="result-title">Quel protocole a gagné ?</h1>
+      <p class="lead">Le lien précédent demandait explicitement HTTP. Cette page lit maintenant le protocole de l’adresse réellement chargée.</p>
+    </section>
+
+    <section id="protocol-card" class="protocol-card" aria-live="polite">
+      <p class="protocol-label">Protocole observé</p>
+      <p id="protocol-value" class="protocol-value">Vérification…</p>
+      <p id="protocol-message">JavaScript compare l’adresse finale avec le lien HTTP demandé.</p>
+    </section>
+
+    <section class="steps" aria-label="Interprétation du résultat">
+      <article class="step">
+        <h2>Comparer demande et résultat</h2>
+        <table class="boundary-table">
+          <tbody>
+            <tr><th scope="row">Lien écrit</th><td><code>http://training.dercetech.com/…</code></td></tr>
+            <tr><th scope="row">Page obtenue</th><td id="final-url"><code>Lecture de l’adresse…</code></td></tr>
+          </tbody>
+        </table>
+      </article>
+
+      <article class="step">
+        <h2>Vérifier dans Network</h2>
+        <p>Filtrez sur <code>upgrade-check.html</code>. Selon le navigateur, vous verrez soit uniquement la requête HTTPS, soit une redirection interne indiquant HSTS. Dans les deux cas, l’application distante ne reçoit pas de requête HTTP en clair.</p>
+      </article>
+
+      <article class="step">
+        <h2>Revenir au laboratoire</h2>
+        <p><a class="button-link" href="index.html">Reprendre depuis le début</a></p>
+        <p><a href="details.html">Voir les choix de configuration</a></p>
+      </article>
+    </section>
+  </main>
+
+  <footer class="site-footer">Jour 3 · S3.04 · Strict-Transport-Security</footer>
+</body>
+</html>

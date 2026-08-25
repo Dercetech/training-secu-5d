@@ -1,0 +1,303 @@
+:root {
+  color-scheme: light;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #111827;
+  background: #edf3f9;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+}
+
+.course-header {
+  width: min(1240px, calc(100% - 2rem));
+  margin: 0 auto;
+  padding: 1.15rem 0 .7rem;
+  color: #1d4ed8;
+  font-size: .83rem;
+}
+
+.course-header nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .55rem;
+  align-items: center;
+}
+
+.workspace {
+  width: min(1240px, calc(100% - 2rem));
+  min-height: calc(100vh - 4.5rem);
+  margin: 0 auto 1rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1.65fr) minmax(320px, .85fr);
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid #d7e0ea;
+  border-radius: 9px;
+}
+
+.lesson,
+.reference {
+  padding: clamp(2rem, 5vw, 4rem);
+}
+
+.reference {
+  color: #dce7f6;
+  background: #0b1423;
+  border-left: 5px solid #2563eb;
+}
+
+.eyebrow {
+  margin: 0 0 .6rem;
+  color: #2458db;
+  font-size: .82rem;
+  font-weight: 850;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+
+.reference .eyebrow {
+  color: #93c5fd;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  line-height: 1.15;
+}
+
+h1 {
+  font-size: clamp(2rem, 4.5vw, 3.2rem);
+}
+
+h2 {
+  font-size: 1.35rem;
+}
+
+h3 {
+  margin-top: 2rem;
+  font-size: 1rem;
+}
+
+.lead {
+  max-width: 64ch;
+  margin: 1rem 0 1.5rem;
+  color: #526174;
+  font-size: 1.05rem;
+  line-height: 1.65;
+}
+
+code,
+pre,
+textarea {
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+}
+
+.examples {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .55rem;
+  margin-bottom: 1.6rem;
+}
+
+button {
+  border: 0;
+  border-radius: 7px;
+  padding: .72rem .9rem;
+  color: #153a87;
+  background: #e8f0ff;
+  font: inherit;
+  font-weight: 750;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #d9e6ff;
+}
+
+button:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid rgb(37 99 235 / 28%);
+  outline-offset: 2px;
+}
+
+button.primary {
+  color: #fff;
+  background: #2458db;
+}
+
+button.primary:hover {
+  background: #1d4ed8;
+}
+
+label {
+  display: block;
+  margin-bottom: .45rem;
+  font-weight: 800;
+}
+
+textarea {
+  width: 100%;
+  resize: vertical;
+  padding: 1rem;
+  color: #e5edf8;
+  background: #0b1423;
+  border: 2px solid #1c3150;
+  border-radius: 8px;
+  font-size: .96rem;
+  line-height: 1.55;
+}
+
+.form-actions,
+.results-heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.form-actions {
+  margin-top: .7rem;
+}
+
+#status {
+  color: #526174;
+  font-size: .9rem;
+}
+
+#status.error {
+  color: #b42318;
+}
+
+#status.success {
+  color: #067647;
+}
+
+.results {
+  margin-top: 2.2rem;
+}
+
+.results-heading {
+  margin-bottom: .65rem;
+}
+
+#row-count {
+  color: #64748b;
+  font-size: .88rem;
+}
+
+.table-container {
+  max-height: 22rem;
+  overflow: auto;
+  border: 1px solid #d7e0ea;
+  border-radius: 7px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: .9rem;
+}
+
+th,
+td {
+  padding: .72rem .8rem;
+  text-align: left;
+  border-bottom: 1px solid #e4eaf1;
+}
+
+th {
+  position: sticky;
+  top: 0;
+  color: #fff;
+  background: #1d4ed8;
+}
+
+tbody tr:nth-child(even) {
+  background: #f7f9fc;
+}
+
+.null,
+.empty {
+  color: #64748b;
+  font-style: italic;
+}
+
+.empty {
+  margin: 0;
+  padding: 1rem;
+}
+
+.reference pre {
+  margin: 1rem 0 0;
+  padding: 1rem;
+  overflow: auto;
+  color: #e5edf8;
+  background: #111f33;
+  border-left: 4px solid #ef4444;
+  border-radius: 7px;
+  line-height: 1.55;
+}
+
+.reference dl {
+  margin: .8rem 0 0;
+}
+
+.reference dl div {
+  display: grid;
+  grid-template-columns: 7rem 1fr;
+  gap: .8rem;
+  padding: .5rem 0;
+  border-bottom: 1px solid #22344e;
+}
+
+.reference dt {
+  color: #fff;
+  font-family: "SFMono-Regular", Consolas, monospace;
+  font-weight: 750;
+}
+
+.reference dd {
+  margin: 0;
+  color: #9fb0c5;
+}
+
+.boundary {
+  margin: 2rem 0 0;
+  padding: 1rem;
+  color: #cbd8e8;
+  background: #111f33;
+  border-radius: 7px;
+  line-height: 1.55;
+}
+
+@media (max-width: 840px) {
+  .workspace {
+    grid-template-columns: 1fr;
+  }
+
+  .reference {
+    border-top: 5px solid #2563eb;
+    border-left: 0;
+  }
+}
+
+@media (max-width: 520px) {
+  .course-header,
+  .workspace {
+    width: min(100% - 1rem, 1240px);
+  }
+
+  .lesson,
+  .reference {
+    padding: 1.4rem;
+  }
+}

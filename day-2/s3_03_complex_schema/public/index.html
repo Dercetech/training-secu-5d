@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>S3.03 — schéma JSON imbriqué</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header class="course-header">
+    <nav aria-label="Fil d’Ariane"><span>Formation</span><span>›</span><span>Jour 2</span><span>›</span><span>Section 3</span><span>›</span><strong>Schéma complexe</strong></nav>
+  </header>
+
+  <main class="workspace">
+    <section class="editor-panel" aria-labelledby="page-title">
+      <p class="eyebrow">S3.03 · Pratique supplémentaire</p>
+      <h1 id="page-title">Valider un vrai objet imbriqué</h1>
+      <p class="lead">Le serveur enregistre actuellement tout l’objet. Écrivez un schéma qui distingue les champs obligatoires, optionnels, nullables et inconnus.</p>
+
+      <form id="brief-form">
+        <label for="json-input">Brief JSON envoyé à <code>POST /api/briefs</code></label>
+        <textarea id="json-input" spellcheck="false" aria-describedby="editor-help"></textarea>
+        <p id="editor-help" class="hint">Modifiez les types, ajoutez des propriétés, utilisez <code>null</code>, puis observez ce que le serveur accepte.</p>
+        <button type="submit">Envoyer ce JSON</button>
+      </form>
+
+      <p id="status" role="status" aria-live="polite"></p>
+
+      <section class="traffic" aria-label="Échange HTTP">
+        <article><h2>Requête</h2><pre><code id="request-output">En attente.</code></pre></article>
+        <article><h2>Réponse</h2><pre><code id="response-output">En attente.</code></pre></article>
+      </section>
+    </section>
+
+    <aside class="contract">
+      <p class="eyebrow">Contrat à construire</p>
+      <h2>Objets, tableaux et null</h2>
+
+      <dl>
+        <div><dt><code>title</code></dt><dd>chaîne obligatoire, non nulle, 5–80 caractères</dd></div>
+        <div><dt><code>owner</code></dt><dd>objet obligatoire avec <code>name</code> et un e-mail valide</dd></div>
+        <div><dt><code>participants</code></dt><dd>tableau obligatoire de 1–5 objets</dd></div>
+        <div><dt><code>participants[].skills</code></dt><dd>tableau de 1–4 chaînes non vides</dd></div>
+        <div><dt><code>participants[].mentor</code></dt><dd>facultatif et nullable : chaîne ou <code>null</code></dd></div>
+        <div><dt><code>tags</code></dt><dd>facultatif, mais non nul s’il existe ; tableau de chaînes uniques</dd></div>
+        <div><dt><code>delivery</code></dt><dd>objet obligatoire : format, date ISO et salle facultative non nulle</dd></div>
+        <div><dt><code>notes</code></dt><dd>facultatif et nullable, 300 caractères maximum</dd></div>
+      </dl>
+
+      <h3>À vous de tester</h3>
+      <p>Inventez plusieurs variantes invalides couvrant les types, les valeurs nulles, les tableaux imbriqués et les propriétés inattendues. Justifiez le statut attendu avant chaque essai.</p>
+
+      <p class="boundary">Le backend de départ est volontairement non validé. Retournez HTTP 400 sans écrire le message refusé dans <code>db/briefs.json</code>.</p>
+    </aside>
+  </main>
+
+  <script src="/app.js" defer></script>
+</body>
+</html>

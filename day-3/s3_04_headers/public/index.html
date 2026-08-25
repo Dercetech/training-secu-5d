@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>D3/S3.04 · Headers de sécurité</title>
+  <meta name="description" content="Point d’entrée des cinq laboratoires consacrés aux headers de sécurité du navigateur.">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav aria-label="Fil d’Ariane">Formation › Jour 3 › Section 3.04 › Headers</nav>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="page-title">
+      <div>
+        <p class="eyebrow">Jour 3 · Section 3.04</p>
+        <h1 id="page-title">Cinq headers, cinq cas concrets</h1>
+        <p class="lead">Choisissez un laboratoire. Chaque carte ouvre directement l’exemple correspondant ; le premier est hébergé sur le sous-domaine Training, les quatre autres utilisent votre serveur local.</p>
+      </div>
+      <aside class="summary" aria-label="Résumé de la section">
+        <strong>5 laboratoires</strong>
+        <span>1 distant · 4 locaux</span>
+        <p>Ouvrez DevTools › Network pour observer les response headers réellement reçus.</p>
+      </aside>
+    </section>
+
+    <section class="labs" aria-labelledby="labs-title">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Au programme</p>
+          <h2 id="labs-title">Choisir un cas</h2>
+        </div>
+        <p>Les cartes suivent l’ordre du cours.</p>
+      </div>
+
+      <div class="lab-grid">
+        <a class="lab-card lab-card-remote" href="https://training.dercetech.com/trainings/python-html5-security/labs/day-3/s3_04/strict-transport-security/">
+          <span class="lab-number">01</span>
+          <span class="lab-content">
+            <span class="lab-meta"><span class="badge badge-remote">Distant</span> training.dercetech.com</span>
+            <strong>Strict-Transport-Security</strong>
+            <span>Observer comment le navigateur renforce un lien écrit en HTTP vers HTTPS.</span>
+          </span>
+          <span class="lab-arrow" aria-hidden="true">→</span>
+        </a>
+
+        <a class="lab-card" href="/x-content-type-options/">
+          <span class="lab-number">02</span>
+          <span class="lab-content">
+            <span class="lab-meta"><span class="badge">Local</span> 127.0.0.1:8037</span>
+            <strong>X-Content-Type-Options</strong>
+            <span>Déclarer les bons types pour un script et une feuille CSS servis par une API.</span>
+          </span>
+          <span class="lab-arrow" aria-hidden="true">→</span>
+        </a>
+
+        <a class="lab-card" href="/referrer-policy/">
+          <span class="lab-number">03</span>
+          <span class="lab-content">
+            <span class="lab-meta"><span class="badge">Local</span> source locale, récepteur distant</span>
+            <strong>Referrer-Policy</strong>
+            <span>Comparer une URL complète qui fuit avec une navigation sans header Referer.</span>
+          </span>
+          <span class="lab-arrow" aria-hidden="true">→</span>
+        </a>
+
+        <a class="lab-card" href="/content-security-policy/">
+          <span class="lab-number">04</span>
+          <span class="lab-content">
+            <span class="lab-meta"><span class="badge">Local</span> composant distant contrôlé</span>
+            <strong>Content-Security-Policy</strong>
+            <span>Autoriser précisément une origine de scripts sans ouvrir les scripts inline.</span>
+          </span>
+          <span class="lab-arrow" aria-hidden="true">→</span>
+        </a>
+
+        <a class="lab-card" href="/permissions-policy/">
+          <span class="lab-number">05</span>
+          <span class="lab-content">
+            <span class="lab-meta"><span class="badge">Local</span> publicité distante en iframe</span>
+            <strong>Permissions-Policy</strong>
+            <span>Empêcher un contenu tiers de demander l’accès à la caméra.</span>
+          </span>
+          <span class="lab-arrow" aria-hidden="true">→</span>
+        </a>
+      </div>
+    </section>
+
+    <aside class="reminder">
+      <strong>À retenir</strong>
+      <p>Ces headers limitent les capacités du navigateur. Ils complètent les contrôles d’accès et la validation applicative, sans les remplacer.</p>
+    </aside>
+  </main>
+
+  <footer>Jour 3 · S3.04 · Headers de sécurité</footer>
+</body>
+</html>

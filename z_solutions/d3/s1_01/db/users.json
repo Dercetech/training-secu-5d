@@ -1,0 +1,20 @@
+[
+  {
+    "username": "alice",
+    "password": "bonjour",
+    "name": "Alice Martin",
+    "role": "student"
+  },
+  {
+    "username": "samir",
+    "password": "soleil",
+    "name": "Samir Benali",
+    "role": "student"
+  },
+  {
+    "username": "admin",
+    "password": "atelier",
+    "name": "Administratrice du laboratoire",
+    "role": "admin"
+  }
+]

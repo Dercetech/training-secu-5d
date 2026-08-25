@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SameSite=Lax — sécurité 101</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <main class="shell">
+    <section class="card" aria-labelledby="page-title">
+      <p class="eyebrow">Jour 1 · Cookies · S2.03</p>
+      <h1 id="page-title">Que laisse passer SameSite=Lax&nbsp;?</h1>
+      <p class="lead">Ce site espion local tente deux requêtes vers l’application volontairement vulnérable. Comparez leurs résultats.</p>
+
+      <ol class="flow">
+        <li>
+          <strong>Se connecter sur le site du cours</strong>
+          <p>Utilisez uniquement le compte fictif <code>admin</code> / <code>password</code> et un prénom inventé.</p>
+          <a class="button-link secondary" href="https://training.dercetech.com/trainings/python-html5-security/labs/day-1/s2/unsafe/" target="_blank" rel="noopener">Ouvrir la page de connexion</a>
+        </li>
+        <li>
+          <strong>Essayer une requête en arrière-plan</strong>
+          <p>Le navigateur ne doit pas joindre le cookie <code>SameSite=Lax</code> à ce <code>fetch()</code> cross-site.</p>
+          <button id="fetch-button" type="button">Tester fetch()</button>
+        </li>
+        <li id="result-card" class="result-card" aria-labelledby="result-title" hidden>
+          <h2 id="result-title">Résultat</h2>
+          <pre id="result" aria-live="polite"></pre>
+        </li>
+        <li>
+          <strong>Suivre un lien trompeur</strong>
+          <p>Ce bouton ouvre une navigation GET de premier niveau. Il prétend montrer une image, mais la route distante remplace en réalité le cookie <code>demo_theme=blue</code> par <code>demo_theme=red</code>.</p>
+          <button id="navigation-button" type="button">Voir une photo de chat (navigation GET)</button>
+        </li>
+      </ol>
+    </section>
+
+    <aside class="note" aria-label="Explication pédagogique">
+      <p class="eyebrow">À retenir</p>
+      <h2>Lax ne bloque pas tout</h2>
+      <p><code>SameSite=Lax</code> bloque le cookie pendant le <code>fetch()</code> cross-site de cette page.</p>
+      <p>Il autorise cependant le cookie lors de certaines navigations GET de premier niveau, par exemple après un vrai clic sur un lien ou un bouton.</p>
+      <p>Le site local peut provoquer le changement de couleur, mais il ne peut lire ni la page distante, ni le prénom, ni les cookies de l’autre origine.</p>
+      <p><strong>Règle essentielle :</strong> une route GET ne doit pas modifier l’état d’un compte.</p>
+    </aside>
+  </main>
+
+  <script src="/app.js" defer></script>
+</body>
+</html>

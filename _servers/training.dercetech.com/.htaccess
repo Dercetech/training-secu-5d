@@ -1,0 +1,3 @@
+# Redirect only this directory's public root. Nested lab routes remain intact.
+RewriteEngine On
+RewriteRule ^$ https://training.dercetech.com/trainings/python-html5-security/ [R=302,L]

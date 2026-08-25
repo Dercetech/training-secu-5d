@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>D1/S4 · SameSite=Strict</title>
+  <meta name="description" content="Laboratoire guidé pour comparer SameSite=Lax et SameSite=Strict.">
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="icon" href="/assets/img/dt-favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../assets/lab.css?v=20260824-01">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="breadcrumb" aria-label="Fil d’Ariane">
+      <a href="https://training.dercetech.com/">Training</a><span aria-hidden="true">/</span>
+      <a href="https://training.dercetech.com/trainings/python-html5-security/">Sécuriser Python &amp; HTML5</a><span aria-hidden="true">/</span>
+      <span aria-current="page">D1/S4</span>
+    </nav>
+  </header>
+
+  <main>
+    <section class="course-intro" aria-labelledby="lab-title">
+      <p class="eyebrow">Jour 1 · Section 4 · Lab guidé</p>
+      <h1 id="lab-title">Comparer <code>SameSite=Lax</code> et <code>SameSite=Strict</code></h1>
+      <p class="lead">Reprenez le login volontairement simple de S2, puis observez la différence exacte dans les lignes brutes <code>Set-Cookie</code>.</p>
+    </section>
+
+    <p class="notice"><strong>Environnement contrôlé uniquement.</strong> Utilisez le compte fictif <code>admin</code> / <code>password</code> et un prénom inventé. Aucun cookie réel.</p>
+
+    <section class="steps" aria-label="Étapes du lab">
+      <article class="step">
+        <h2>Créer les cookies S4</h2>
+        <p><a class="button-link" href="safer/">Ouvrir l’application S4</a></p>
+        <p>Connectez-vous avec les mêmes données fictives que dans S2. Les cookies S4 utilisent des noms séparés afin de ne pas écraser l’exercice précédent.</p>
+      </article>
+
+      <article class="step">
+        <h2>Comparer les headers bruts</h2>
+        <p>Dans DevTools → Network, ouvrez la réponse de <code>safer/login.php</code>. Les trois lignes <code>Set-Cookie</code> doivent contenir exactement <code>SameSite=Strict</code>.</p>
+        <p>Ouvrez ensuite le login S2 dans un autre onglet et comparez sa réponse : elle utilise <code>SameSite=Lax</code>. Ne comparez pas seulement la colonne Storage ; le header brut montre ce que PHP a réellement envoyé.</p>
+        <p><a class="button-link" href="../s2/unsafe/">Ouvrir le login S2</a></p>
+      </article>
+
+      <article class="step">
+        <h2>Faire l’essai vert / rouge en local</h2>
+        <p>Lancez <code>day-1/s2_03b_samesite_fixed/</code> avec Flask ou Express, puis ouvrez <code>http://127.0.0.1:8014/</code>. La préférence distante démarre en vert.</p>
+        <p>Comme dans S2.03, testez d’abord le <code>fetch()</code>, puis la navigation GET vers <code>get-safer.php</code>. Avec <code>SameSite=Strict</code>, le cookie de session n’accompagne aucun des deux essais cross-site : l’API refuse le passage au rouge et la préférence reste verte.</p>
+      </article>
+
+      <article class="step">
+        <h2>Ne pas mélanger les attributs</h2>
+        <p><code>SameSite</code> contrôle le contexte cross-site. <code>Secure</code> contrôle l’envoi via HTTPS. <code>HttpOnly</code> contrôle la lecture par JavaScript. S4 change uniquement la valeur de <code>SameSite</code> par rapport à S2.</p>
+      </article>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <a href="https://training.dercetech.com/trainings/python-html5-security/">Retour à la formation Sécuriser Python &amp; HTML5</a>
+  </footer>
+</body>
+</html>

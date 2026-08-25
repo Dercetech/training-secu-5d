@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CameraFit · Publicité fictive</title>
+  <meta name="description" content="Publicité fictive du laboratoire Permissions-Policy.">
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="stylesheet" href="styles.css?v=20260825-01">
+  <script src="ad.js?v=20260825-01" defer></script>
+</head>
+<body>
+  <main class="ad-card">
+    <div class="ad-label">Publicité fictive · Lab local uniquement</div>
+    <div class="brand-row">
+      <div class="brand-mark" aria-hidden="true">CF</div>
+      <div>
+        <p class="brand-name">CameraFit</p>
+        <p class="brand-tagline">Votre reflet, notre argument marketing.</p>
+      </div>
+    </div>
+
+    <section class="pitch">
+      <p class="eyebrow">Essayage virtuel 101</p>
+      <h1>Cette pub aimerait ouvrir votre webcam</h1>
+      <p>Elle prétend proposer un miroir virtuel. L’exercice porte sur la capacité que la page parent choisit—ou non—de déléguer à cette iframe.</p>
+    </section>
+
+    <p id="policy-state" class="policy-state">Vérification de la policy du parent…</p>
+
+    <div class="camera-stage">
+      <video id="camera-preview" autoplay muted playsinline hidden></video>
+      <div id="camera-placeholder" class="camera-placeholder">
+        <span aria-hidden="true">◉</span>
+        <p>Aucun flux caméra actif</p>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button id="start-camera" type="button">Activer ma caméra pour l’essai</button>
+      <button id="stop-camera" class="button-secondary" type="button" hidden>Arrêter la caméra</button>
+    </div>
+
+    <p id="camera-message" class="camera-message" aria-live="polite">Aucune demande n’est lancée sans votre clic.</p>
+    <p class="privacy-copy">Le flux reste dans cet onglet. Ce lab ne contient aucun upload, enregistrement ou stockage.</p>
+  </main>
+</body>
+</html>

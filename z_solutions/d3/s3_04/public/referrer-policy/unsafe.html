@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Referrer-Policy · Page bavarde</title>
+  <meta name="description" content="Source locale volontairement configurée avec Referrer-Policy unsafe-url.">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav aria-label="Fil d’Ariane"><a href="../">Referrer-Policy</a> › Page bavarde</nav>
+  </header>
+
+  <main>
+    <section class="course-intro" aria-labelledby="page-title">
+      <p class="eyebrow">Cas 1 · Observation</p>
+      <h1 id="page-title">Cette URL parle trop</h1>
+      <p class="lead">Regardez la barre d’adresse : elle contient un faux <code>reset_token</code>. La réponse de cette page annonce <code>Referrer-Policy: unsafe-url</code>.</p>
+    </section>
+
+    <section class="journey-card journey-unsafe">
+      <h2>Ce qui devrait traverser la frontière</h2>
+      <p>En suivant le lien, le navigateur peut joindre l’adresse complète de cette page dans le request header <code>Referer</code>, y compris sa query string.</p>
+      <p><a class="button button-danger" href="https://training.dercetech.com/trainings/python-html5-security/labs/day-3/s3_04/referrer-policy/?case=unsafe">Ouvrir le récepteur distant</a></p>
+    </section>
+
+    <section class="instructions">
+      <h2>À vérifier</h2>
+      <ol>
+        <li>Dans Network, sélectionnez ce document et confirmez son response header <code>Referrer-Policy: unsafe-url</code>.</li>
+        <li>Ouvrez le récepteur distant.</li>
+        <li>Repérez <code>reset_token=CLASSROOM-DEMO-4821</code> dans le header affiché.</li>
+      </ol>
+    </section>
+  </main>
+
+  <footer><a href="../">Retour au choix des parcours</a></footer>
+</body>
+</html>

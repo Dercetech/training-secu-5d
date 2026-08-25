@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>D3/S3.04 · X-Content-Type-Options</title>
+  <meta name="description" content="Laboratoire local pour corriger les types MIME de ressources protégées par nosniff.">
+  <link rel="stylesheet" href="base.css">
+  <link rel="stylesheet" href="/api/x-content-type-options/styles">
+  <script src="/api/x-content-type-options/script" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <nav aria-label="Fil d’Ariane">Formation › Jour 3 › Section 3.04 › X-Content-Type-Options</nav>
+  </header>
+
+  <main>
+    <section class="course-intro" aria-labelledby="lab-title">
+      <p class="eyebrow">Header 2/5 · Lab local</p>
+      <h1 id="lab-title">Le navigateur ne doit pas deviner</h1>
+      <p class="lead">Deux ressources sont bien renvoyées par l’API, mais le serveur a oublié leur <code>Content-Type</code>. Avec <code>X-Content-Type-Options: nosniff</code>, le navigateur refuse de les interpréter à l’aveugle.</p>
+    </section>
+
+    <section class="lab-grid" aria-label="Résultats de chargement">
+      <article class="panel">
+        <p class="panel-kicker">JavaScript</p>
+        <h2>Le script est-il exécuté ?</h2>
+        <p id="script-status" class="status status-blocked">JavaScript non exécuté : vérifiez le type MIME dans Network et la Console.</p>
+        <button id="action-button" type="button" disabled>Tester le JavaScript</button>
+      </article>
+
+      <article id="interactive-preview" class="panel mime-preview">
+        <p class="panel-kicker">Feuille de style</p>
+        <h2>Le CSS est-il interprété ?</h2>
+        <p class="css-pending">CSS non interprétée : la carte conserve son apparence d’alerte.</p>
+        <p class="css-ready">CSS interprétée : la carte devient verte.</p>
+      </article>
+    </section>
+
+    <section class="instructions" aria-labelledby="instructions-title">
+      <p class="eyebrow">Travail demandé</p>
+      <h2 id="instructions-title">Corriger le contrat HTTP, pas le navigateur</h2>
+      <ol>
+        <li>Dans DevTools → Network, ouvrez les réponses <code>script</code> et <code>styles</code>.</li>
+        <li>Confirmez que leur contenu arrive bien et que <code>X-Content-Type-Options</code> vaut <code>nosniff</code>.</li>
+        <li>Dans le serveur Flask ou Express, donnez à chaque réponse son type réel : JavaScript ou CSS.</li>
+        <li>Conservez <code>nosniff</code>, redémarrez le serveur, puis rechargez la page sans cache.</li>
+      </ol>
+      <p class="hint"><strong>Ne trichez pas avec l’URL :</strong> ajouter une extension <code>.js</code> ou <code>.css</code> ne remplace pas un vrai response header <code>Content-Type</code>.</p>
+    </section>
+
+    <aside class="explanation">
+      <h2>Pourquoi ce refus est une bonne chose</h2>
+      <p>Si le serveur annonce mal une ressource, le navigateur n’essaie pas de déduire son rôle depuis son contenu. Une réponse inattendue ne devient donc pas automatiquement un script exécutable.</p>
+      <p><code>nosniff</code> ne répare pas le serveur : il rend l’erreur visible et exige un contrat HTTP correct.</p>
+    </aside>
+  </main>
+
+  <footer>Jour 3 · S3.04 · Ressources fictives et locales uniquement</footer>
+</body>
+</html>

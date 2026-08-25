@@ -1,0 +1,14 @@
+[
+  {
+    "id": "user-alice",
+    "user": "alice",
+    "pwd": "alice123",
+    "role": "user"
+  },
+  {
+    "id": "9dcd2383-516f-4582-bde5-a202681f3007",
+    "role": "user",
+    "user": "alice2",
+    "pwd": "alice123"
+  }
+]

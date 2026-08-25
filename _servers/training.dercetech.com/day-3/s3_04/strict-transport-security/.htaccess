@@ -1,0 +1,6 @@
+<IfModule mod_headers.c>
+  # Five minutes is enough for the classroom observation without leaving a
+  # long-lived policy on learners' browsers. This applies to the whole host,
+  # even though the header is configured from this lab directory.
+  Header always set Strict-Transport-Security "max-age=300"
+</IfModule>

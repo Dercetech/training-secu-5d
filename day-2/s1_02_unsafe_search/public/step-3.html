@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="fr">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Étape 3 — condition toujours vraie</title><link rel="stylesheet" href="/styles.css"></head>
+<body>
+  <header class="course-header"><nav aria-label="Fil d’Ariane"><span>Formation</span><span>›</span><span>Jour 2</span><span>›</span><span>Section 1</span><span>›</span><strong>Condition toujours vraie</strong></nav></header>
+  <nav class="steps" aria-label="Étapes du laboratoire"><a href="/"><span>1</span> Requête normale</a><a href="/step-2.html"><span>2</span> Apostrophe</a><a href="/step-3.html" aria-current="step"><span>3</span> Toujours vrai</a><a href="/step-4.html"><span>4</span> Cibler un compte</a></nav>
+  <main class="workspace">
+    <section class="lesson" aria-labelledby="page-title">
+      <p class="eyebrow">Étape 3 sur 4 · Modifier le sens</p><h1 id="page-title">Condition toujours vraie</h1>
+      <p class="lead">Tapez manuellement <code>' OR 1=1 --</code>. Comparez le SQL final et le nombre d’utilisateurs avec l’étape 1.</p>
+      <form id="search-form" role="search"><label for="search">Adresse e-mail ou saisie à tester</label><div class="search-row"><input id="search" name="search" autocomplete="off" placeholder="Recopiez l’entrée indiquée" required><button class="primary" type="submit">Envoyer</button></div></form>
+      <section class="observations" aria-label="Trajet de la requête"><article><p class="number">1</p><h2>Le navigateur envoie</h2><pre><code id="request-output">En attente.</code></pre></article><article><p class="number">2</p><h2>Le serveur reçoit</h2><pre><code id="received-output">En attente.</code></pre></article><article><p class="number">3</p><h2>Le serveur construit</h2><pre><code id="sql-output">En attente.</code></pre></article><article><p class="number">4</p><h2>Le serveur répond</h2><pre><code id="response-output">En attente.</code></pre></article></section>
+      <div class="result-heading"><h2>Utilisateurs trouvés</h2><span id="row-count"></span><span id="timing"></span></div><p id="status" role="status" aria-live="polite"></p><div id="cards" class="cards"><p class="empty">Effectuez l’étape pour voir les utilisateurs.</p></div>
+      <a class="next" href="/step-4.html">Continuer : cibler un compte →</a>
+    </section>
+    <aside class="reference"><p class="eyebrow danger">Entrée contrôlée</p><h2><code>' OR 1=1 --</code></h2><ol><li><code>'</code> ferme la chaîne.</li><li><code>OR 1=1</code> rend le filtre vrai.</li><li><code>--</code> commente la fin.</li></ol><p class="boundary">Résultat attendu : cinq utilisateurs au lieu d’un seul.</p></aside>
+  </main><script src="/app.js" defer></script>
+</body>
+</html>

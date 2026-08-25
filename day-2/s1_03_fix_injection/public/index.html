@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>S1.03 — corriger une injection SQL</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header class="course-header">
+    <nav aria-label="Fil d’Ariane"><span>Formation</span><span>›</span><span>Jour 2</span><span>›</span><span>Section 1</span><span>›</span><strong>Corriger l’injection</strong></nav>
+  </header>
+
+  <main class="workspace">
+    <section class="lesson" aria-labelledby="page-title">
+      <p class="eyebrow">S1.03 · Laboratoire</p>
+      <h1 id="page-title">Recherche des enseignants</h1>
+      <p class="lead">Commencez par une recherche normale, observez comment la saisie devient du SQL, puis vérifiez si la requête peut lire autre chose que la table prévue.</p>
+
+      <form id="search-form" role="search">
+        <label for="search">Nom de l’enseignant</label>
+        <div class="search-row">
+          <input id="search" name="search" autocomplete="off" placeholder="Tapez Alice" required>
+          <button class="primary" type="submit">Rechercher</button>
+        </div>
+      </form>
+
+      <section class="observations" aria-label="Trajet de la requête">
+        <article><p class="number">1</p><h2>Le navigateur envoie</h2><pre><code id="request-output">En attente.</code></pre></article>
+        <article><p class="number">2</p><h2>Le serveur reçoit</h2><pre><code id="received-output">En attente.</code></pre></article>
+        <article><p class="number">3</p><h2>Le serveur prépare</h2><pre><code id="sql-output">En attente.</code></pre></article>
+        <article><p class="number">4</p><h2>Le serveur répond</h2><pre><code id="response-output">En attente.</code></pre></article>
+      </section>
+
+      <div class="result-heading"><h2>Résultats affichés</h2><span id="row-count"></span><span id="timing"></span></div>
+      <p id="status" role="status" aria-live="polite"></p>
+      <div id="cards" class="cards"><p class="empty">Effectuez une recherche pour voir les résultats.</p></div>
+    </section>
+
+    <aside class="reference">
+      <p class="eyebrow">Votre mission</p>
+      <h2>Observer, puis corriger</h2>
+
+      <ol class="missions">
+        <li><strong>Recherche normale</strong><code>Alice</code><span>Un seul enseignant doit apparaître.</span></li>
+        <li><strong>Voir les tables</strong><code>__none__' UNION SELECT 0, name, type FROM sqlite_master WHERE type='table' --</code><span>Repérez les noms renvoyés dans les cartes.</span></li>
+        <li><strong>Lire l’autre table</strong><code>__none__' UNION SELECT id, title, body FROM staff_notes --</code><span>Les colonnes empruntent les noms du premier SELECT.</span></li>
+        <li><strong>Corriger le serveur</strong><span>La recherche doit rester fonctionnelle, mais la saisie ne doit plus modifier la structure SQL.</span></li>
+      </ol>
+
+      <p class="boundary">Laboratoire scolaire local uniquement. Utilisez ces entrées seulement avec la base SQLite fictive fournie.</p>
+    </aside>
+  </main>
+
+  <script src="/app.js" defer></script>
+</body>
+</html>

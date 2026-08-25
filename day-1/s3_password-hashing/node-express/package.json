@@ -1,0 +1,15 @@
+{
+  "name": "secu5d-s3-password-hashing-express",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Version Express du laboratoire local sur le hachage des mots de passe",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "demo:argon2": "node argon2-demo.js"
+  },
+  "dependencies": {
+    "argon2": "^0.44.0",
+    "express": "^5.1.0"
+  }
+}

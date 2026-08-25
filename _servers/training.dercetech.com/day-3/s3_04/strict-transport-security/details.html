@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>D3/S3.04 · Comprendre max-age</title>
+  <meta name="description" content="Choix pédagogiques et limites de la configuration HSTS du laboratoire.">
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="icon" href="/assets/img/dt-favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../../assets/lab.css?v=20260825-01">
+  <link rel="stylesheet" href="styles.css?v=20260825-01">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="breadcrumb" aria-label="Fil d’Ariane">
+      <a href="index.html">HSTS</a><span aria-hidden="true">/</span>
+      <span aria-current="page">Configuration</span>
+    </nav>
+  </header>
+
+  <main>
+    <section class="course-intro" aria-labelledby="details-title">
+      <p class="eyebrow">Comprendre la configuration</p>
+      <h1 id="details-title">Une bonne protection se prépare</h1>
+      <p class="lead">HSTS est simple à écrire, mais sa portée et sa durée méritent une décision consciente.</p>
+    </section>
+
+    <section class="steps" aria-label="Détails de configuration HSTS">
+      <article class="step">
+        <h2><code>max-age=300</code></h2>
+        <p>Le laboratoire utilise cinq minutes afin que le navigateur oublie rapidement la règle. Un site de production stabilisé choisit généralement une durée bien plus longue.</p>
+      </article>
+
+      <article class="step">
+        <h2>Pas de <code>includeSubDomains</code></h2>
+        <p>Cette option étend la règle à tous les sous-domaines. Elle ne doit être activée que lorsque chacun d’eux fonctionne durablement en HTTPS.</p>
+      </article>
+
+      <article class="step">
+        <h2>Pas de <code>preload</code></h2>
+        <p>Le préchargement demande un engagement plus fort et une inscription séparée auprès des navigateurs. Ajouter simplement le mot au header ne précharge rien.</p>
+      </article>
+
+      <article class="step">
+        <h2>Le bénéfice concret</h2>
+        <p>Une fois la règle apprise, même un ancien favori, un lien tapé en HTTP ou une URL copiée sans le <code>s</code> est renforcé localement avant le départ de la requête.</p>
+        <p><a class="button-link" href="index.html">Retourner au test</a></p>
+      </article>
+    </section>
+  </main>
+
+  <footer class="site-footer">Jour 3 · S3.04 · Strict-Transport-Security</footer>
+</body>
+</html>

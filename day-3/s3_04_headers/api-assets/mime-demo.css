@@ -1,0 +1,18 @@
+.mime-preview {
+  border-color: #3a9667;
+  background: #eefaf3;
+}
+
+.css-pending {
+  display: none;
+}
+
+.css-ready {
+  display: inline;
+  color: #17633d;
+}
+
+.preview-active {
+  background: #dff6e9;
+  box-shadow: 0 0 0 4px rgba(58, 150, 103, .16);
+}

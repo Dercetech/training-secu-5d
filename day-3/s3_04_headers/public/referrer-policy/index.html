@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>D3/S3.04 · Referrer-Policy</title>
+  <meta name="description" content="Laboratoire local pour comparer une URL référente bavarde et une navigation sans Referer.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav aria-label="Fil d’Ariane">Formation › Jour 3 › Section 3.04 › Referrer-Policy</nav>
+  </header>
+
+  <main>
+    <section class="course-intro" aria-labelledby="lab-title">
+      <p class="eyebrow">Header 3/5 · Deux origines</p>
+      <h1 id="lab-title">Que raconte le lien précédent ?</h1>
+      <p class="lead">Une page locale contient un faux token dans son URL, puis envoie le navigateur vers un récepteur distant. La politique de la page source décide si cette adresse accompagne la navigation.</p>
+    </section>
+
+    <p class="notice"><strong>Données fictives uniquement.</strong> Les valeurs <code>reset_token</code> ci-dessous sont des marqueurs de classe sans aucune valeur réelle. Le récepteur affiche la requête courante et ne stocke rien.</p>
+
+    <section class="choice-grid" aria-label="Parcours à comparer">
+      <article class="choice choice-unsafe">
+        <p class="choice-number">01</p>
+        <p class="eyebrow">Observation</p>
+        <h2>Page bavarde</h2>
+        <p>Le serveur annonce <code>unsafe-url</code>. L’adresse locale complète, faux token compris, peut être envoyée au prochain site.</p>
+        <a class="button button-danger" href="unsafe/?reset_token=CLASSROOM-DEMO-4821">Ouvrir la page bavarde</a>
+      </article>
+
+      <article class="choice choice-safe">
+        <p class="choice-number">02</p>
+        <p class="eyebrow">Exercice</p>
+        <h2>Page à protéger</h2>
+        <p>Dans le squelette, cette route reste volontairement bavarde. Remplacez sa politique par <code>no-referrer</code>, puis comparez.</p>
+        <a class="button" href="safe/?reset_token=CLASSROOM-DEMO-7359">Ouvrir la page à protéger</a>
+      </article>
+    </section>
+
+    <section class="instructions">
+      <h2>Pourquoi deux routes locales ?</h2>
+      <p><code>Referrer-Policy</code> appartient à la réponse de la page qui contient le lien. Deux routes permettent donc au serveur d’envoyer deux politiques différentes sur deux documents pourtant très proches.</p>
+      <p>Le récepteur doit être sur une autre origine pour rendre la frontière visible. Ici, Flask ou Express sert la source sur <code>127.0.0.1:8037</code> et le site Training affiche le header reçu.</p>
+    </section>
+  </main>
+
+  <footer>Jour 3 · S3.04 · Referrer-Policy</footer>
+</body>
+</html>

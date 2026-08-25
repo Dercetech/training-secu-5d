@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>S3.02 — rechercher et valider le JSON</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body data-lab="s3_02">
+  <header class="course-header">
+    <nav aria-label="Fil d’Ariane"><span>Formation</span><span>›</span><span>Jour 2</span><span>›</span><span>Section 3</span><span>›</span><strong>Rechercher et corriger</strong></nav>
+  </header>
+
+  <main class="workspace">
+    <section class="application" aria-labelledby="page-title">
+      <p class="eyebrow">S3.02 · Schéma à écrire</p>
+      <h1 id="page-title">Le serveur doit imposer le contrat</h1>
+      <p class="lead">Cette copie contient la même faille. Cette fois, le serveur doit imposer lui-même ce qu’est une inscription valide.</p>
+
+      <nav class="screen-tabs" aria-label="Écrans de l’application">
+        <button type="button" data-show-screen="login">Connexion</button>
+        <button type="button" data-show-screen="register">Inscription</button>
+        <button type="button" data-show-screen="dashboard">Tableau de bord</button>
+      </nav>
+
+      <section class="screen" data-screen="login">
+        <h2>Connexion</h2>
+        <p class="hint">Compte de départ : <code>alice</code> / <code>alice123</code>.</p>
+        <form id="login-form">
+          <label for="login-user">Utilisateur</label>
+          <input id="login-user" name="user" autocomplete="username" required>
+          <label for="login-pwd">Mot de passe</label>
+          <input id="login-pwd" name="pwd" type="password" autocomplete="current-password" required>
+          <button type="submit">Se connecter</button>
+        </form>
+      </section>
+
+      <section class="screen" data-screen="register" hidden>
+        <h2>Créer un compte</h2>
+        <p class="hint">Après votre correction, le corps doit contenir exactement <code>user</code> et <code>pwd</code>. Toute propriété inattendue doit produire HTTP 400.</p>
+        <form id="register-form">
+          <label for="register-user">Utilisateur</label>
+          <input id="register-user" name="user" autocomplete="username" required>
+          <label for="register-pwd">Mot de passe</label>
+          <input id="register-pwd" name="pwd" type="password" autocomplete="new-password" required>
+          <button type="submit">S’inscrire</button>
+        </form>
+      </section>
+
+      <section class="screen" data-screen="dashboard" hidden>
+        <div class="dashboard-heading">
+          <div><h2>Tableau de bord</h2><p id="viewer">Aucune session.</p></div>
+          <button id="refresh-dashboard" type="button">Redemander les données</button>
+        </div>
+        <h3>Jeton présenté au serveur</h3>
+        <pre><code id="token-output">Aucun jeton.</code></pre>
+        <h3>JSON reçu</h3>
+        <pre><code id="dashboard-output">Connectez-vous ou inscrivez-vous.</code></pre>
+      </section>
+
+      <p id="status" role="status" aria-live="polite"></p>
+    </section>
+
+    <aside class="inspector">
+      <p class="eyebrow">Votre objectif</p>
+      <h2>Écrire la frontière du serveur</h2>
+      <p class="mission-copy">Choisissez Flask ou Express, recherchez son outil de validation et implémentez le contrat de l’inscription. Un message valide doit continuer à fonctionner ; tout le reste doit être refusé avant l’écriture.</p>
+
+      <h3>Contrat de l’inscription</h3>
+      <ul class="missions">
+        <li><code>user</code> : chaîne obligatoire, 3 à 30 caractères</li>
+        <li><code>pwd</code> : chaîne obligatoire, 6 à 100 caractères</li>
+        <li>aucune autre propriété</li>
+      </ul>
+
+      <div class="traffic">
+        <h3>JSON envoyé</h3>
+        <pre><code id="request-output">En attente.</code></pre>
+        <h3>Réponse HTTP</h3>
+        <pre><code id="response-output">En attente.</code></pre>
+      </div>
+      <p class="boundary">Le résultat attendu est défini ; la marche à suivre ne l’est pas. Documentez vos choix.</p>
+    </aside>
+  </main>
+
+  <script src="/app.js" defer></script>
+</body>
+</html>

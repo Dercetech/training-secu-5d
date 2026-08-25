@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SameSite=Strict — sécurité 101</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <main class="shell">
+    <section class="card" aria-labelledby="page-title">
+      <p class="eyebrow">Jour 1 · Cookies · S2.03b</p>
+      <h1 id="page-title">Que bloque <code>SameSite=Strict</code>&nbsp;?</h1>
+      <p class="lead">Ce site de test local reprend les deux requêtes de S2.03 vers l’application corrigée. Le thème distant démarre en vert ; chaque bouton tente de le passer au rouge.</p>
+
+      <ol class="flow">
+        <li>
+          <strong>Se connecter sur l’application corrigée</strong>
+          <p>Utilisez uniquement le compte fictif <code>admin</code> / <code>password</code> et un prénom inventé.</p>
+          <a class="button-link secondary" href="https://training.dercetech.com/trainings/python-html5-security/labs/day-1/s4/safer/" target="_blank" rel="noopener">Ouvrir la page de connexion</a>
+        </li>
+        <li>
+          <strong>Essayer une requête en arrière-plan</strong>
+          <p>Le navigateur ne doit pas joindre le cookie <code>SameSite=Strict</code> à ce <code>fetch()</code> cross-site.</p>
+          <button id="fetch-button" type="button">Tester fetch()</button>
+        </li>
+        <li id="result-card" class="result-card" aria-labelledby="result-title" hidden>
+          <h2 id="result-title">Résultat</h2>
+          <pre id="result" aria-live="polite"></pre>
+        </li>
+        <li>
+          <strong>Essayer la même navigation que dans S2.03</strong>
+          <p>Cette navigation GET de premier niveau tente elle aussi de remplacer <code>s4_theme=green</code> par <code>s4_theme=red</code>. Avec <code>Strict</code>, le cookie de session ne doit pas partir : le changement échoue.</p>
+          <button id="navigation-button" type="button">Tenter de passer au rouge</button>
+        </li>
+      </ol>
+    </section>
+
+    <aside class="note" aria-label="Explication pédagogique">
+      <p class="eyebrow">À retenir</p>
+      <h2>Strict bloque les deux essais</h2>
+      <p>Comme <code>Lax</code>, <code>SameSite=Strict</code> bloque le cookie pendant le <code>fetch()</code> cross-site.</p>
+      <p>À la différence de <code>Lax</code>, il le bloque aussi pendant cette navigation GET cross-site de premier niveau. Le serveur ne reconnaît donc pas la session et le thème reste vert.</p>
+      <p><code>SameSite</code> contrôle le contexte cross-site. <code>Secure</code> contrôle HTTPS et <code>HttpOnly</code> la lecture JavaScript : ce sont trois protections différentes.</p>
+      <p><strong>Contexte contrôlé :</strong> utilisez uniquement les valeurs fictives du cours.</p>
+    </aside>
+  </main>
+
+  <script src="/app.js" defer></script>
+</body>
+</html>

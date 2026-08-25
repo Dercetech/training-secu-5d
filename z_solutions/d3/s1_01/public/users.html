@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Utilisateurs — solution JWT</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body data-page="users">
+  <header><nav>Solution › Jour 3 › Section 1 › Utilisateurs</nav><a href="/dashboard">Retour au dashboard</a></header>
+  <main class="single-panel">
+    <section>
+      <p class="eyebrow">Zone restreinte</p>
+      <h1>Utilisateurs</h1>
+      <article id="admin-warning" class="notice warning-card hidden" role="alert">
+        <h2>For admins only</h2>
+        <p>La session validée ne possède pas le rôle <code>admin</code>.</p>
+      </article>
+      <section id="users-area" class="admin-area hidden" aria-labelledby="users-title">
+        <h2 id="users-title">Liste autorisée par le back-end</h2>
+        <div id="users" class="user-grid"></div>
+      </section>
+    </section>
+  </main>
+  <script src="/app.js" defer></script>
+</body>
+</html>

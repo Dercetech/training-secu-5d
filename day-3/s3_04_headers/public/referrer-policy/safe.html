@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Referrer-Policy · Page à protéger</title>
+  <meta name="description" content="Source locale dont la Referrer-Policy doit être corrigée en no-referrer.">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav aria-label="Fil d’Ariane"><a href="../">Referrer-Policy</a> › Page à protéger</nav>
+  </header>
+
+  <main>
+    <section class="course-intro" aria-labelledby="page-title">
+      <p class="eyebrow">Cas 2 · Exercice</p>
+      <h1 id="page-title">Cette URL doit rester locale</h1>
+      <p class="lead">Le faux token reste visible dans votre barre d’adresse. Votre travail consiste à empêcher sa transmission au prochain site en corrigeant le response header de cette route.</p>
+    </section>
+
+    <section class="journey-card journey-safe">
+      <h2>Objectif : aucun <code>Referer</code></h2>
+      <p>Dans Flask ou Express, trouvez la route <code>/referrer-policy/safe/</code> et remplacez sa politique volontairement bavarde par <code>no-referrer</code>. Redémarrez le serveur et rechargez cette page avant de tester.</p>
+      <p><a class="button" href="https://training.dercetech.com/trainings/python-html5-security/labs/day-3/s3_04/referrer-policy/?case=safe">Ouvrir le récepteur distant</a></p>
+    </section>
+
+    <section class="instructions">
+      <h2>Résultat attendu après correction</h2>
+      <ol>
+        <li>Network montre <code>Referrer-Policy: no-referrer</code> sur ce document.</li>
+        <li>Le récepteur distant indique que le request header <code>Referer</code> est absent.</li>
+        <li>Le faux token demeure dans l’adresse locale, mais ne franchit pas la navigation.</li>
+      </ol>
+    </section>
+  </main>
+
+  <footer><a href="../">Retour au choix des parcours</a></footer>
+</body>
+</html>

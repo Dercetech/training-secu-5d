@@ -1,0 +1,8 @@
+# Local runtime artifacts
+.venv/
+__pycache__/
+node-express/node_modules/
+db/lab.sqlite3
+db/lab.sqlite3-shm
+db/lab.sqlite3-wal
+.DS_Store

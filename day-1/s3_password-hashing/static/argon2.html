@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Argon2id — sécurité 101</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <main class="shell">
+    <section class="card" aria-labelledby="page-title">
+      <p class="eyebrow">Jour 1 · Hachage dédié</p>
+      <h1 id="page-title">Argon2id ralentit volontairement chaque essai</h1>
+      <p class="lead">Générez un hash salé, puis comparez son coût avec les 10 000 SHA-256 de la page précédente.</p>
+
+      <p class="warning"><strong>Benchmark protégé.</strong> Le serveur mesure trois vrais calculs Argon2id et projette le temps de 10 000 calculs. Il n’immobilise pas votre machine pendant plusieurs minutes.</p>
+
+      <div class="actions">
+        <button id="hash-button" type="button">Créer un hash Argon2id</button>
+        <button id="benchmark-button" type="button" class="secondary">Projeter 10 000 calculs</button>
+      </div>
+      <pre id="result" aria-live="polite">Prêt.</pre>
+      <a href="/">← Revenir au benchmark SHA-256</a>
+      <span aria-hidden="true"> · </span>
+      <a href="/decrypt.html">Essayer le faux décryptage →</a>
+    </section>
+
+    <aside class="note" aria-label="Lecture du résultat">
+      <p class="eyebrow">À observer</p>
+      <h2>Une chaîne auto-descriptive</h2>
+      <ul>
+        <li><code>$argon2id$</code> indique l’algorithme ;</li>
+        <li>les paramètres sont inclus dans la chaîne ;</li>
+        <li>un sel aléatoire rend chaque résultat différent ;</li>
+        <li>la vérification recalcule : elle ne déchiffre rien.</li>
+      </ul>
+      <p>Relancez la création plusieurs fois et comparez les valeurs.</p>
+    </aside>
+  </main>
+
+  <script src="/argon2.js" defer></script>
+</body>
+</html>

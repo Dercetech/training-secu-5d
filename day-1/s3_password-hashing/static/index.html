@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hachage des mots de passe — sécurité 101</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <main class="shell">
+    <section class="card" aria-labelledby="page-title">
+      <p class="eyebrow">Jour 1 · Hachage</p>
+      <h1 id="page-title">SHA-256 n’est pas adapté aux mots de passe</h1>
+      <p class="lead">Testez le compte fictif, observez son hash, puis suivez le parcours Argon2id du README.</p>
+
+      <p class="warning"><strong>Exercice local volontairement vulnérable.</strong> N’utilisez jamais un vrai mot de passe ici.</p>
+
+      <form id="login-form">
+        <label for="username">Nom d’utilisateur</label>
+        <input id="username" name="username" value="admin" autocomplete="username" required>
+
+        <label for="password">Mot de passe</label>
+        <input id="password" name="password" type="password" value="password" autocomplete="current-password" required>
+
+        <button type="submit">Tester la connexion</button>
+      </form>
+
+      <div class="actions">
+        <button id="dump-button" type="button" class="secondary">Afficher le hash SHA-256</button>
+        <button id="benchmark-button" type="button">Hasher 10 000 fois</button>
+      </div>
+      <pre id="result" aria-live="polite">Prêt.</pre>
+    </section>
+
+    <aside class="note" aria-label="Parcours pédagogique">
+      <p class="eyebrow">Même matériel, deux serveurs</p>
+      <h2>Flask ou Express</h2>
+      <p>Les deux versions lisent exactement :</p>
+      <ul>
+        <li><code>static/</code> pour cette page ;</li>
+        <li><code>db/users.json</code> pour le compte ;</li>
+        <li><code>POST /api/login</code> ;</li>
+        <li><code>GET /api/dump</code>.</li>
+      </ul>
+      <p>Choisissez un serveur, puis essayez l’autre sans changer le client ni les données.</p>
+      <a class="page-link" href="/argon2.html">Comparer avec Argon2id →</a>
+      <br>
+      <a class="page-link" href="/decrypt.html">« Décrypter » un SHA-256 →</a>
+    </aside>
+  </main>
+
+  <script src="/app.js" defer></script>
+</body>
+</html>

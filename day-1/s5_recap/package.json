@@ -1,0 +1,10 @@
+{
+  "name": "secu5d-day1-s5-recap",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Démonstration locale et contrôlée d’un script malveillant dans une page de connexion.",
+  "scripts": {
+    "start:script": "node script-server/server.js",
+    "start:consumer": "node consumer-site/server.js"
+  }
+}
