@@ -10,7 +10,7 @@ credentials or remote paths.
 | `second-domain/` | `https://training.bad-sector.games/secu-5d/` | Controlled Bad Sector demonstration dashboard and API |
 | `second-domain-root/` | `https://training.bad-sector.games/` | Bad Sector root landing only |
 | `training2.dercetech.com/` | `https://training2.dercetech.com/` | Sibling-subdomain landing and cookie-scope demo |
-| `incinerator/` | `http://sc8rumo3487.universe.wf/` | Disposable SC8 file-manager breach demonstration |
+| `incinerator/` | `https://floppy-riot.com/` | Disposable SC8 file-manager breach demonstration hosted on SC8 |
 
 The D1/S2 demonstration dashboard source is `second-domain/day1/s2/`; its
 public route is `https://training.bad-sector.games/secu-5d/day1/s2/`. Data
