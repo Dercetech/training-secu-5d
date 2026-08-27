@@ -18,7 +18,11 @@ Pour essayer un exemple :
 - `03_read_another_file.php` lit le contenu du faux `settings.php` ;
 - `04_display_env.php` affiche une seule variable d’environnement non secrète ;
 - `05_read_public_certificate.php` liste les certificats publics du compte SC8,
-  puis affiche le certificat `.crt` choisi.
+  puis affiche le certificat `.crt` choisi ;
+- `06_display_friday_env.php` lit uniquement la variable d’environnement
+  `FRIDAY` ;
+- `07_run_shell_script.php` exécute le bloc shell écrit directement dans le
+  fichier PHP et affiche sa sortie.
 
 Tous les chemins sont calculés depuis `__DIR__`. Un fichier copié dans
 `data/scripts/` se trouve deux niveaux sous la racine du site :
@@ -47,3 +51,16 @@ La clé **privée** correspondante est différente : elle ne doit jamais être
 affichée, copiée ou rendue accessible au processus web. L’exemple 05 se limite
 volontairement à `ssl/certs/`, accepte uniquement les fichiers `.crt` déjà
 présents dans ce dossier et ne recherche aucun fichier de clé.
+
+## Exécution shell
+
+Dans l’exemple 07, le bloc `$script` fait partie du fichier PHP : il faut donc
+modifier puis enregistrer le fichier pour changer les commandes exécutées. Il
+n’existe volontairement aucun paramètre `?cmd=` qui transformerait la page en
+web shell public.
+
+Les commandes s’exécutent avec l’utilisateur et les permissions du processus
+PHP, pas avec celles de la personne qui visite la page. L’exemple fourni se
+limite à des informations locales anodines (`id`, dossier courant et version du
+système). N’y placez ni clé, ni mot de passe, ni commande visant un autre
+système.
